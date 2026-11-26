@@ -293,26 +293,31 @@ body {
 }
 
 /* ==========================================================================
-   THE THREAD MENU: OPEN STATE (FULL-SCREEN EDITORIAL OVERLAY)
+   THE THREAD MENU: REFINED MINIMAL NAVIGATION OVERLAY (OPEN STATE)
+   Keep ONLY:
+   1. NOVUS Stitch Globe logo
+   2. Close button
+   3. Seven navigation links
+   Quiet luxury, uncluttered editorial typography inspired by Ashford & Lane.
    ========================================================================== */
 .thread-overlay {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(8, 9, 12, 0.985);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  background-color: rgba(9, 10, 13, 0.985);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   z-index: 2000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2.2rem 3.5rem;
+  padding: 2rem 3.5rem;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.5s;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.45s;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -323,18 +328,18 @@ body {
   pointer-events: auto;
 }
 
-/* Top Bar: Edition Tag & Animated Close Button */
+/* Top Bar: Logo on Left, Close Button on Right */
 .thread-overlay-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.10);
+  max-width: 1440px;
+  margin: 0 auto;
   opacity: 0;
-  transform: translateY(-12px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  transform: translateY(-8px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
 }
 
 .thread-overlay.is-open .thread-overlay-bar {
@@ -342,373 +347,203 @@ body {
   transform: translateY(0);
 }
 
-.overlay-brand-tag {
+/* 1. NOVUS Stitch Globe Logo inside Overlay */
+.overlay-brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  user-select: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-brand-logo:hover {
+  opacity: 0.85;
+}
+
+.overlay-brand-logo .logo-mark {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-family: var(--font-sans);
-  font-size: 0.70rem;
-  letter-spacing: 0.32em;
-  color: rgba(255, 255, 255, 0.65);
+  line-height: 1;
 }
 
-.atelier-edition-label {
-  color: #ffffff;
+.overlay-brand-logo .logo-letter {
+  font-family: var(--font-serif);
+  font-size: 26px;
   font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  opacity: 1;
+  transform: none;
 }
 
-.atelier-tagline-sep {
-  opacity: 0.4;
+.overlay-logo-globe {
+  width: 26px;
+  height: 26px;
+  margin: 0 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Animated Close Button */
+.overlay-logo-globe .stitch-globe-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
+.overlay-brand-logo .logo-tagline {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  margin-top: 3px;
+  padding-left: 2px;
+  opacity: 1;
+  transform: none;
+}
+
+/* 2. Refined Close Button */
 .thread-close-btn {
   background: none;
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 0.4rem 0.6rem;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.5rem 0.6rem;
   transition: color 0.3s ease, transform 0.3s ease;
+  user-select: none;
 }
 
 .thread-close-btn:hover {
   color: #ffffff;
-  transform: scale(1.04);
+  transform: translateY(-1px);
 }
 
 .close-btn-text {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.70rem;
   font-weight: 400;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
 }
 
-.close-icon-wrap {
-  width: 22px;
-  height: 22px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.close-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.close-cross-stitch {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.stitch-needle {
-  transition: stroke-dashoffset 0.4s ease, stroke 0.3s ease;
-}
-
-.needle-knot {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-}
-
-.thread-close-btn:hover .close-cross-stitch {
+.thread-close-btn:hover .close-icon {
   transform: rotate(90deg);
 }
 
-.thread-close-btn:hover .needle-knot {
-  transform: scale(1.4);
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
-}
-
 /* ==========================================================================
-   OVERLAY BODY: SPREAD WITH UNFOLDING THREAD SPINE
+   3. SEVEN NAVIGATION LINKS: CLEAN, SPACIOUS, EDITORIAL TYPOGRAPHY
+   Reduced font size, balanced vertical rhythm, sole focus of the overlay.
    ========================================================================== */
-.thread-overlay-content {
-  display: grid;
-  grid-template-columns: 24px 1fr 340px;
-  gap: 3.5rem;
-  align-items: center;
-  width: 100%;
-  max-width: 1400px;
-  margin: auto;
-  padding: 2.5rem 0;
-  position: relative;
-}
-
-/* Animated Unfolding Loom Stitched Spine */
-.unfolding-thread-spine {
-  height: 100%;
+.thread-nav-container {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-.spine-svg {
-  width: 6px;
-  height: 100%;
-  color: rgba(255, 255, 255, 0.35);
-  overflow: visible;
-}
-
-.spine-thread-path {
-  stroke-dasharray: 5 3.5;
-  stroke-dashoffset: 800;
-  transition: stroke-dashoffset 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-}
-
-.thread-overlay.is-open .spine-thread-path {
-  stroke-dashoffset: 0;
-  animation: spine-thread-glide 20s linear infinite 1.3s;
-}
-
-@keyframes spine-thread-glide {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: 85; }
-}
-
-/* Navigation Links Container */
-.thread-links-container {
   width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 0;
 }
 
 .thread-nav-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 1.45rem;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-/* Single Item Structure */
 .thread-nav-item {
   position: relative;
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(14px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.thread-overlay.is-open .thread-nav-item:nth-child(1) { transition-delay: 0.08s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(2) { transition-delay: 0.13s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(3) { transition-delay: 0.18s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(4) { transition-delay: 0.23s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(5) { transition-delay: 0.28s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(6) { transition-delay: 0.33s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(7) { transition-delay: 0.38s; }
+
 .thread-overlay.is-open .thread-nav-item {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: calc(var(--item-index) * 0.055s + 0.15s);
 }
 
+/* The Navigation Link */
 .thread-nav-link {
-  display: flex;
-  align-items: baseline;
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.1vw, 2.45rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.84);
   text-decoration: none;
-  color: var(--color-text-light);
-  padding: 0.65rem 0;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
   position: relative;
-  transition: opacity 0.3s ease;
+  transition: color 0.35s ease,
+              letter-spacing 0.35s ease,
+              transform 0.35s ease,
+              opacity 0.35s ease;
 }
 
-/* Dims other items on hover for intense focus */
+/* Sibling dimming for quiet luxury focus */
 .thread-nav-list:hover .thread-nav-link {
-  opacity: 0.32;
+  color: rgba(255, 255, 255, 0.28);
 }
 
 .thread-nav-list:hover .thread-nav-link:hover {
-  opacity: 1;
-}
-
-/* Numbering (Subtle, Monospaced Luxury Tracking) */
-.nav-item-num {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.40);
-  margin-right: 2.2rem;
-  min-width: 2.4rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.thread-nav-link:hover .nav-item-num {
   color: #ffffff;
-  transform: translateX(-4px);
+  letter-spacing: 0.12em;
+  transform: translateY(-1px);
 }
 
-/* Oversized Editorial Typography (Ashford & Lane reference) */
-.nav-item-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  line-height: 1.05;
-  color: #ffffff;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              letter-spacing 0.4s ease,
-              color 0.3s ease;
-  white-space: nowrap;
-}
-
-.thread-nav-link:hover .nav-item-title {
-  transform: translateX(14px);
-  letter-spacing: 0.06em;
-  color: #ffffff;
-}
-
-/* Atelier Discipline / Subtitle */
-.nav-item-discipline {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.32);
-  margin-left: auto;
-  padding-left: 2rem;
-  white-space: nowrap;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.thread-nav-link:hover .nav-item-discipline {
-  color: rgba(255, 255, 255, 0.85);
-  transform: translateX(-8px);
-}
-
-/* Thread Hover Line */
-.nav-thread-hover-line {
+/* Subtle, refined hairline underline animation */
+.thread-nav-link::after {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 1px;
-  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.4));
-  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: rgba(255, 255, 255, 0.65);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
-.thread-nav-link:hover .nav-thread-hover-line {
+.thread-nav-link:hover::after {
+  width: 80%;
+}
+
+/* Bottom Spacer for Optical Symmetry */
+.overlay-bottom-spacer {
+  height: 28px;
   width: 100%;
-}
-
-/* Delicate Thread-Inspired Running-Stitch Divider */
-.nav-item-divider {
-  width: 100%;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.12) 50%, transparent 50%);
-  background-size: 8px 1px;
-  background-repeat: repeat-x;
-  margin-top: 0.4rem;
-}
-
-/* ==========================================================================
-   RIGHT COLUMN: ATELIER LOOKBOOK PANEL (EDITORIAL)
-   ========================================================================== */
-.thread-overlay-editorial {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 3rem;
-  border-left: 1px dashed rgba(255, 255, 255, 0.10);
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-}
-
-.thread-overlay.is-open .thread-overlay-editorial {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.motif-rotating-stitch {
-  width: 110px;
-  height: 110px;
-  margin-bottom: 2.2rem;
-  color: rgba(255, 255, 255, 0.35);
-  animation: motif-slow-turn 32s linear infinite;
-}
-
-@keyframes motif-slow-turn {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.editorial-stitch-symbol {
-  width: 100%;
-  height: 100%;
-}
-
-.editorial-manifesto {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.manifesto-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.30em;
-  color: #ffffff;
-}
-
-.manifesto-body {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.65);
-  font-style: italic;
-}
-
-.manifesto-specs {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 1rem;
-  padding-top: 1.2rem;
-  border-top: 1px dashed rgba(255, 255, 255, 0.12);
-}
-
-.spec-col {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.spec-label {
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.26em;
-  color: rgba(255, 255, 255, 0.38);
-}
-
-.spec-val {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  color: #ffffff;
-}
-
-/* Overlay Footer */
-.thread-overlay-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding-top: 1.5rem;
-  border-top: 1px dashed rgba(255, 255, 255, 0.10);
-  opacity: 0;
-  transition: opacity 0.5s ease 0.35s;
-}
-
-.thread-overlay.is-open .thread-overlay-footer {
-  opacity: 1;
-}
-
-.footer-craft-line {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.30em;
-  color: rgba(255, 255, 255, 0.42);
-}
-
-.footer-close-hint {
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.25em;
-  color: rgba(255, 255, 255, 0.30);
+  pointer-events: none;
 }
 
 /* ==========================================================================
@@ -978,15 +813,15 @@ body {
   }
 }
 
-/* Locked / Docked State in Navbar */
+/* Locked / Docked State in Navbar (Maintains white typography & illuminated silver strokes) */
 .animated-globe-wrapper.globe-in-navbar .stitch-globe-svg {
-  filter: none;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
 }
 
 .animated-globe-wrapper.globe-in-navbar .thread-stitch,
 .animated-globe-wrapper.globe-in-navbar .thread-continuous-master,
 .animated-globe-wrapper.globe-in-navbar .stitch-knot {
-  stroke: var(--color-stitch-dark);
+  stroke: var(--color-stitch-white);
 }
 
 /* Gentle pace retention in navbar for artisanal quality */
@@ -1005,41 +840,50 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS (THE THREAD MENU & NAVBAR)
    ========================================================================== */
 @media (max-width: 1080px) {
-  .nav-list {
-    gap: 1.5rem;
-  }
-  .nav-link {
-    font-size: 0.70rem;
-    letter-spacing: 0.15em;
+  .navbar-container {
+    padding: 0 2rem;
   }
 }
 
-@media (max-width: 900px) {
-  .nav-menu {
-    display: none;
-  }
-  
-  .mobile-toggle {
-    display: flex;
-  }
-  
+@media (max-width: 768px) {
   :root {
     --navbar-height: 72px;
     --globe-hero-size: 150px;
     --globe-nav-size: 25px;
   }
-  
+
   .navbar-container {
     padding: 0 1.5rem;
   }
-  
-  .logo-letter {
-    font-size: 25px;
+
+  .thread-trigger-label {
+    display: none; /* Shows purely the iconic three-knot stitched line on mobile */
   }
-  
+
+  .thread-trigger-svg {
+    width: 44px;
+  }
+
+  .thread-overlay {
+    padding: 1.5rem 1.4rem;
+  }
+
+  .thread-nav-list {
+    gap: 1.25rem;
+  }
+
+  .thread-nav-link {
+    font-size: clamp(1.45rem, 5.2vw, 1.95rem);
+    letter-spacing: 0.06em;
+  }
+
+  .logo-letter {
+    font-size: 24px;
+  }
+
   .logo-tagline {
     font-size: 7.5px;
   }
@@ -1047,17 +891,29 @@ body {
 
 @media (max-width: 480px) {
   :root {
-    --navbar-height: 68px;
+    --navbar-height: 66px;
     --globe-hero-size: 130px;
     --globe-nav-size: 23px;
   }
-  
+
   .navbar-container {
-    padding: 0 1.25rem;
+    padding: 0 1.15rem;
   }
-  
+
+  .thread-overlay {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .thread-nav-list {
+    gap: 1.1rem;
+  }
+
+  .thread-nav-link {
+    font-size: 1.55rem;
+  }
+
   .logo-letter {
-    font-size: 23px;
+    font-size: 22px;
     letter-spacing: 0.12em;
   }
 }

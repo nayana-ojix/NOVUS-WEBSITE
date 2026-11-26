@@ -13,9 +13,13 @@
   const animatedGlobe = document.getElementById('animated-globe-wrapper');
   const ambientGlow = document.getElementById('ambient-glow');
   const scrollCue = document.getElementById('scroll-cue');
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  
+  // The Thread Menu Elements
+  const threadMenuTrigger = document.getElementById('thread-menu-trigger');
+  const threadCloseBtn = document.getElementById('thread-close-btn');
+  const threadOverlay = document.getElementById('thread-overlay');
+  const threadNavLinks = document.querySelectorAll('.thread-nav-link');
+  const overlayBrandLogo = document.getElementById('overlay-brand-logo');
 
   // Animation & Interpolation Configuration
   let scrollThreshold = Math.min(window.innerHeight * 0.7, 500); // Distance over which transition completes
@@ -115,63 +119,78 @@
     updateScrollAnimation();
   }
 
-  // Mobile Hamburger Drawer Toggle
-  function setupMobileMenu() {
-    if (!mobileToggle || !mobileDrawer) return;
+  // ==========================================================================
+  // THE THREAD MENU CONTROLLER (OPEN / CLOSE / ESCAPE / SMOOTH SCROLL)
+  // ==========================================================================
+  function setupThreadMenu() {
+    if (!threadMenuTrigger || !threadOverlay) return;
 
-    mobileToggle.addEventListener('click', function () {
-      const isOpen = mobileDrawer.classList.contains('open');
-      if (isOpen) {
-        closeMobileDrawer();
-      } else {
-        openMobileDrawer();
+    // Open Overlay
+    threadMenuTrigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openThreadMenu();
+    });
+
+    // Close Button Click
+    if (threadCloseBtn) {
+      threadCloseBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeThreadMenu();
+      });
+    }
+
+    // Overlay Brand Logo Click
+    if (overlayBrandLogo) {
+      overlayBrandLogo.addEventListener('click', function (e) {
+        closeThreadMenu();
+      });
+    }
+
+    // Keyboard ESC listener
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && threadOverlay.classList.contains('is-open')) {
+        closeThreadMenu();
       }
     });
 
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        closeMobileDrawer();
-      });
-    });
-  }
-
-  function openMobileDrawer() {
-    mobileDrawer.classList.add('open');
-    mobileToggle.classList.add('active');
-    mobileToggle.setAttribute('aria-expanded', 'true');
-    mobileDrawer.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
-  }
-
-  function closeMobileDrawer() {
-    mobileDrawer.classList.remove('open');
-    mobileToggle.classList.remove('active');
-    mobileToggle.setAttribute('aria-expanded', 'false');
-    mobileDrawer.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  // Smooth Navigation Links handling
-  function setupNavLinks() {
-    const allLinks = document.querySelectorAll('a[href^="#"]');
-    allLinks.forEach(link => {
+    // Navigation Links Click Handler
+    threadNavLinks.forEach(link => {
       link.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
-        if (targetId === '#' || targetId === '') return;
         
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault();
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+        // Graceful close of overlay
+        closeThreadMenu();
+
+        if (targetId && targetId !== '#') {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            setTimeout(() => {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+          }
         }
       });
     });
   }
 
+  function openThreadMenu() {
+    threadOverlay.classList.add('is-open');
+    threadMenuTrigger.setAttribute('aria-expanded', 'true');
+    threadOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Lock background scroll
+  }
+
+  function closeThreadMenu() {
+    threadOverlay.classList.remove('is-open');
+    threadMenuTrigger.setAttribute('aria-expanded', 'false');
+    threadOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
   // Initial setup on DOM ready
   function init() {
-    setupMobileMenu();
-    setupNavLinks();
+    setupThreadMenu();
     
     // Initial paint
     updateScrollAnimation();
