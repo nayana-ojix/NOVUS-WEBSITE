@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVUS APPAREL — High Fashion & Atelier Craftsmanship</title>
+  
+  <!-- Typography Reference: Ashford Lane Bespoke Tailoring Atelier -->
+  <!-- Cormorant Garamond (Editorial Serif) + Tenor Sans & Montserrat (Refined Luxury Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP NAVIGATION BAR
+       Strictly includes the 7 requested items:
+       Home | About Us | Leadership | Technology Partners | 
+       Design & Products | Factories | Contact Us
+       ============================================================ -->
+  <header class="navbar" id="main-navbar" aria-label="Main Navigation">
+    <div class="navbar-container">
+      
+      <!-- Brand Logo Container: N + [Stitch Globe as O] + VUS / APPAREL -->
+      <a href="#home" class="brand-logo" id="brand-logo" aria-label="NOVUS APPAREL Home">
+        <div class="logo-mark">
+          <span class="logo-letter logo-letter-n">N</span>
+          <!-- Docking target slot for the Stitch Globe 'O' -->
+          <div class="logo-o-slot" id="logo-o-slot" aria-hidden="true"></div>
+          <span class="logo-letter logo-letter-vus">VUS</span>
+        </div>
+        <span class="logo-tagline">APPAREL</span>
+      </a>
+
+      <!-- The Thread Menu Trigger (Closed State: Three thread knots connected by stitched line) -->
+      <button class="thread-menu-trigger" id="thread-menu-trigger" aria-label="Open The Thread Menu" aria-expanded="false">
+        <span class="thread-trigger-label">MENU</span>
+        <svg class="thread-trigger-svg" viewBox="0 0 52 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Subtle stitched connecting line -->
+          <line x1="5" y1="9" x2="47" y2="9" class="thread-stitch-line" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round"/>
+          <!-- Three delicate embroidery thread knots -->
+          <g class="thread-knot knot-start">
+            <circle cx="9" cy="9" r="3.2" class="knot-ring" stroke="currentColor" stroke-width="1" fill="none"/>
+            <circle cx="9" cy="9" r="1.3" class="knot-dot" fill="currentColor"/>
+          </g>
+          <g class="thread-knot knot-mid">
+            <circle cx="26" cy="9" r="3.2" class="knot-ring" stroke="currentColor" stroke-width="1" fill="none"/>
+            <circle cx="26" cy="9" r="1.3" class="knot-dot" fill="currentColor"/>
+          </g>
+          <g class="thread-knot knot-end">
+            <circle cx="43" cy="9" r="3.2" class="knot-ring" stroke="currentColor" stroke-width="1" fill="none"/>
+            <circle cx="43" cy="9" r="1.3" class="knot-dot" fill="currentColor"/>
+          </g>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- ============================================================
+         THE THREAD MENU: FULL-SCREEN NAVIGATION OVERLAY (Open State)
+         Oversized Ashford & Lane inspired typography, thread dividers,
+         and animated unfolding stitched line.
+         ============================================================ -->
+    <div class="thread-overlay" id="thread-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Main Navigation">
+      
+      <!-- Top Overlay Action Bar -->
+      <div class="thread-overlay-bar">
+        <div class="overlay-brand-tag">
+          <span class="atelier-edition-label">NOVUS APPAREL</span>
+          <span class="atelier-tagline-sep">&bull;</span>
+          <span class="atelier-sub-label">THE THREAD MENU</span>
+        </div>
+
+        <!-- Animated Close Button (Cross-stitch thread needles) -->
+        <button class="thread-close-btn" id="thread-close-btn" aria-label="Close navigation overlay">
+          <span class="close-btn-text">CLOSE</span>
+          <div class="close-icon-wrap" aria-hidden="true">
+            <svg class="close-cross-stitch" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="4" y1="4" x2="16" y2="16" class="stitch-needle needle-1" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 1.8" stroke-linecap="round"/>
+              <line x1="16" y1="4" x2="4" y2="16" class="stitch-needle needle-2" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 1.8" stroke-linecap="round"/>
+              <!-- Center cross-knot -->
+              <circle cx="10" cy="10" r="1.4" class="needle-knot" fill="currentColor"/>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <!-- Main Navigation Layout: Two-Column Editorial Spread -->
+      <div class="thread-overlay-content">
+        
+        <!-- Left: The Unfolding Loom Stitched Line -->
+        <div class="unfolding-thread-spine" aria-hidden="true">
+          <svg class="spine-svg" preserveAspectRatio="none" viewBox="0 0 6 800">
+            <line x1="3" y1="0" x2="3" y2="800" class="spine-thread-path" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4.5 3" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Center: Editorial Navigation Links List (Exactly 7 items) -->
+        <nav class="thread-links-container" aria-label="Overlay Navigation">
+          <ul class="thread-nav-list">
+            
+            <li class="thread-nav-item" style="--item-index: 1;">
+              <a href="#home" class="thread-nav-link">
+                <span class="nav-item-num">01</span>
+                <span class="nav-item-title">Home</span>
+                <span class="nav-item-discipline">Core &bull; Atelier Genesis</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+            <li class="thread-nav-item" style="--item-index: 2;">
+              <a href="#about-us" class="thread-nav-link">
+                <span class="nav-item-num">02</span>
+                <span class="nav-item-title">About Us</span>
+                <span class="nav-item-discipline">Heritage &bull; Tailoring Craft</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+            <li class="thread-nav-item" style="--item-index: 3;">
+              <a href="#leadership" class="thread-nav-link">
+                <span class="nav-item-num">03</span>
+                <span class="nav-item-title">Leadership</span>
+                <span class="nav-item-discipline">Vision &bull; Executive Direction</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+            <li class="thread-nav-item" style="--item-index: 4;">
+              <a href="#technology-partners" class="thread-nav-link">
+                <span class="nav-item-num">04</span>
+                <span class="nav-item-title">Technology Partners</span>
+                <span class="nav-item-discipline">Automated Weaving &bull; Machinery</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+            <li class="thread-nav-item" style="--item-index: 5;">
+              <a href="#design-products" class="thread-nav-link">
+                <span class="nav-item-num">05</span>
+                <span class="nav-item-title">Design &amp; Products</span>
+                <span class="nav-item-discipline">Haute Couture &bull; Fabric Library</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+            <li class="thread-nav-item" style="--item-index: 6;">
+              <a href="#factories" class="thread-nav-link">
+                <span class="nav-item-num">06</span>
+                <span class="nav-item-title">Factories</span>
+                <span class="nav-item-discipline">Global Footprint &bull; 12 Facilities</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+            <li class="thread-nav-item" style="--item-index: 7;">
+              <a href="#contact-us" class="thread-nav-link">
+                <span class="nav-item-num">07</span>
+                <span class="nav-item-title">Contact Us</span>
+                <span class="nav-item-discipline">Atelier Liaison &bull; Inquiries</span>
+                <span class="nav-thread-hover-line" aria-hidden="true"></span>
+              </a>
+              <div class="nav-item-divider" aria-hidden="true"></div>
+            </li>
+
+          </ul>
+        </nav>
+
+        <!-- Right: Editorial Atelier Lookbook Panel (Desktop) -->
+        <aside class="thread-overlay-editorial" aria-hidden="true">
+          <div class="editorial-motif-wrap">
+            <div class="motif-rotating-stitch">
+              <svg viewBox="0 0 100 100" class="editorial-stitch-symbol">
+                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
+                <ellipse cx="50" cy="50" rx="44" ry="14" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 2.5"/>
+                <ellipse cx="50" cy="50" rx="14" ry="44" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 2.5"/>
+              </svg>
+            </div>
+            <div class="editorial-manifesto">
+              <span class="manifesto-eyebrow">THE CRAFT OF ARCHITECTURAL TAILORING</span>
+              <p class="manifesto-body">
+                Formed through continuous stitch geometry. Each garment represents precision global engineering harmonized with hand-finished textile artistry.
+              </p>
+              <div class="manifesto-specs">
+                <div class="spec-col">
+                  <span class="spec-label">TECHNIQUE</span>
+                  <span class="spec-val">Loom Basting</span>
+                </div>
+                <div class="spec-col">
+                  <span class="spec-label">EDITION</span>
+                  <span class="spec-val">2026 Atelier</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- Overlay Footer Ribbon -->
+      <footer class="thread-overlay-footer">
+        <span class="footer-craft-line">GLOBAL REACH &bull; TEXTILE CRAFTSMANSHIP &bull; BESPOKE LUXURY</span>
+        <span class="footer-close-hint">PRESS ESC TO RETURN</span>
+      </footer>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SCROLL ANIMATION STAGE
+       - Initial state: only the illuminated Stitch Globe at center
+         on a dark screen.
+       - On scroll: smoothly translates to navbar, scales down,
+         transitions stroke from white/silver to dark, and reveals
+         the full NOVUS APPAREL typography.
+       ============================================================ -->
+  <main class="scroll-stage-container" id="scroll-stage">
+    
+    <!-- Hero Initial Presentation Layer (Dark screen) -->
+    <div class="hero-stage" id="hero-stage">
+      
+      <!-- Ambient Thread Glow Aura -->
+      <div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
+
+      <!-- Scroll Invitation Indicator (fades out immediately on scroll) -->
+      <div class="scroll-cue" id="scroll-cue">
+        <span class="scroll-cue-text">SCROLL TO DISCOVER</span>
+        <div class="scroll-cue-line"></div>
+      </div>
+
+    </div>
+
+    <!-- The Animated Stitch Globe Element (starts at center, morphs to navbar) -->
+    <div class="animated-globe-wrapper" id="animated-globe-wrapper" aria-hidden="true">
+      <svg class="stitch-globe-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Ethereal silver-white embroidery thread glow filter -->
+          <filter id="stitch-glow-hero" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="
+              1 0 0 0 1
+              0 1 0 0 1
+              0 0 1 0 1
+              0 0 0 0.7 0" result="glowMatrix"/>
+            <feMerge>
+              <feMergeNode in="glowMatrix" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Spherical Base Group with Tailoring Axial Tilt and Weaving Motion -->
+        <g class="globe-thread-network" transform-origin="50 50">
+          
+          <!-- Outer Running-Stitch Embroidery Rim (Continuous loop seam) -->
+          <circle cx="50" cy="50" r="42" 
+                  class="thread-stitch stitch-rim" 
+                  fill="none" 
+                  stroke-width="1.6" 
+                  stroke-dasharray="4 2.5" 
+                  stroke-linecap="round" />
+
+          <!-- Longitude Meridians (Warp Threads - Vertical Weaving) -->
+          <!-- Central Prime Meridian -->
+          <ellipse cx="50" cy="50" rx="14" ry="42" 
+                   class="thread-stitch stitch-warp stitch-warp-prime" 
+                   fill="none" 
+                   stroke-width="1.3" 
+                   stroke-dasharray="3.5 2.5" 
+                   stroke-linecap="round" />
+
+          <!-- Mid Longitudes (East & West) -->
+          <ellipse cx="50" cy="50" rx="28" ry="42" 
+                   class="thread-stitch stitch-warp stitch-warp-mid" 
+                   fill="none" 
+                   stroke-width="1.2" 
+                   stroke-dasharray="3.2 2.3" 
+                   stroke-linecap="round" />
+
+          <!-- Outer Meridian Contours -->
+          <ellipse cx="50" cy="50" rx="38" ry="42" 
+                   class="thread-stitch stitch-warp stitch-warp-outer" 
+                   fill="none" 
+                   stroke-width="1.0" 
+                   stroke-dasharray="3 2" 
+                   stroke-linecap="round" />
+
+          <!-- Latitude Parallels (Weft Threads - Horizontal Weaving) -->
+          <!-- Equator Main Weave -->
+          <ellipse cx="50" cy="50" rx="42" ry="13" 
+                   class="thread-stitch stitch-weft stitch-weft-equator" 
+                   fill="none" 
+                   stroke-width="1.4" 
+                   stroke-dasharray="3.2 2" 
+                   stroke-linecap="round" />
+
+          <!-- Northern Tropic Weft -->
+          <path d="M 15.2 32 C 24 23.5, 76 23.5, 84.8 32" 
+                class="thread-stitch stitch-weft stitch-weft-north" 
+                fill="none" 
+                stroke-width="1.2" 
+                stroke-dasharray="2.8 1.8" 
+                stroke-linecap="round" />
+
+          <!-- Southern Tropic Weft -->
+          <path d="M 15.2 68 C 24 76.5, 76 76.5, 84.8 68" 
+                class="thread-stitch stitch-weft stitch-weft-south" 
+                fill="none" 
+                stroke-width="1.2" 
+                stroke-dasharray="2.8 1.8" 
+                stroke-linecap="round" />
+
+          <!-- Weaving Counter-Thread: Fluid Tailor's Basting Wave across Equator -->
+          <path d="M 10 50 Q 25 45, 40 52 T 70 48 T 90 50" 
+                class="thread-stitch stitch-wave-weft" 
+                fill="none" 
+                stroke-width="1.1" 
+                stroke-dasharray="3.5 2.5" 
+                stroke-linecap="round" />
+
+          <!-- Master Artisan Sewing Thread: Continuous thread weaving through axis & sphere -->
+          <path d="M 40 96 C 45 94, 52 90, 50 82 C 46 72, 33 58, 50 46 C 65 35, 60 16, 50 8" 
+                class="thread-continuous-master" 
+                fill="none" 
+                stroke-width="1.6" 
+                stroke-dasharray="6 3 2 3" 
+                stroke-linecap="round" />
+
+          <!-- Bespoke Basting Tack Stitches at Intersection Nodes -->
+          <line x1="48" y1="48" x2="52" y2="52" class="stitch-knot knot-center" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="52" y1="48" x2="48" y2="52" class="stitch-knot knot-center" stroke-width="1.4" stroke-linecap="round"/>
+
+          <line x1="34" y1="48" x2="38" y2="52" class="stitch-knot knot-west" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="38" y1="48" x2="34" y2="52" class="stitch-knot knot-west" stroke-width="1.2" stroke-linecap="round"/>
+
+          <line x1="62" y1="48" x2="66" y2="52" class="stitch-knot knot-east" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="66" y1="48" x2="62" y2="52" class="stitch-knot knot-east" stroke-width="1.2" stroke-linecap="round"/>
+
+        </g>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- The Scroll Spacer/Track: Strictly provides scroll travel for the animation -->
+    <!-- (No hero content or fake website sections per strict instructions) -->
+    <div class="scroll-track" id="scroll-track"></div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

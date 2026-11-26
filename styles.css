@@ -1,0 +1,1063 @@
+/* ==========================================================================
+   NOVUS APPAREL — HIGH FASHION & ATELIER CRAFTSMANSHIP
+   Typography Reference: Ashford Lane Bespoke Tailoring Atelier (Hostinger)
+   ========================================================================== */
+
+/* --- CSS Reset & Global Variables --- */
+:root {
+  /* Brand Typography: Ashford Lane Atelier Pairing */
+  --font-serif: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+  --font-sans: 'Tenor Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sub: 'Montserrat', 'Tenor Sans', sans-serif;
+
+  /* Color Palette */
+  --color-dark-bg: #090a0d;
+  --color-dark-surface: #111318;
+  --color-light-bg: #ffffff;
+  --color-light-translucent: rgba(255, 255, 255, 0.94);
+  
+  --color-stitch-white: #ffffff;
+  --color-stitch-silver: #e2e8f0;
+  --color-stitch-dark: #121316;
+  
+  --color-text-dark: #121316;
+  --color-text-muted: #64748b;
+  --color-text-light: #ffffff;
+  
+  --color-border-light: rgba(0, 0, 0, 0.07);
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* Dimensions */
+  --navbar-height: 80px;
+  --globe-hero-size: 190px;
+  --globe-nav-size: 28px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-dark-bg);
+  color: var(--color-text-light);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-dark-bg);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   NAVBAR (FIXED HEADER)
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  z-index: 1000;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: background-color, border-color, box-shadow;
+}
+
+/* Scrolled solid state (Maintains dark premium aesthetic) */
+.navbar.navbar-scrolled {
+  background-color: rgba(9, 10, 13, 0.90);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-container {
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   BRAND LOGO (N [GLOBE] VUS APPAREL)
+   ========================================================================== */
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1020;
+  user-select: none;
+  cursor: pointer;
+}
+
+.logo-mark {
+  display: flex;
+  align-items: center;
+  position: relative;
+  line-height: 1;
+}
+
+/* Typography matching Ashford Lane atelier aesthetic */
+.logo-letter {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-text-light);
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.4s ease;
+  will-change: opacity, transform, color;
+}
+
+.logo-letter-n {
+  transform: translateX(-14px);
+}
+
+.logo-letter-vus {
+  transform: translateX(14px);
+  margin-left: 1px;
+}
+
+/* The slot where the Stitch Globe locks into */
+.logo-o-slot {
+  width: var(--globe-nav-size);
+  height: var(--globe-nav-size);
+  margin: 0 1px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Subtitle APPAREL */
+.logo-tagline {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  margin-top: 3px;
+  padding-left: 2px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+              color 0.4s ease;
+  will-change: opacity, transform, color;
+}
+
+/* Revealed Logo State (after scroll) */
+.brand-logo.logo-revealed .logo-letter {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.brand-logo.logo-revealed .logo-tagline {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrolled logo state (Preserves white typography) */
+.navbar.navbar-scrolled .brand-logo .logo-letter {
+  color: var(--color-text-light);
+}
+
+.navbar.navbar-scrolled .brand-logo .logo-tagline {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ==========================================================================
+   THE THREAD MENU: CLOSED STATE
+   Right-aligned custom icon: three delicate thread knots connected by
+   a subtle stitched line.
+   ========================================================================== */
+.thread-menu-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.6rem 0.8rem;
+  color: var(--color-text-light);
+  border-radius: 4px;
+  position: relative;
+  z-index: 1020;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+  user-select: none;
+}
+
+.thread-menu-trigger:hover {
+  transform: translateY(-1px);
+}
+
+.thread-trigger-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem; /* 11.5px */
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.thread-menu-trigger:hover .thread-trigger-label {
+  color: #ffffff;
+  letter-spacing: 0.32em;
+}
+
+/* Three Knots & Stitched Line SVG */
+.thread-trigger-svg {
+  width: 52px;
+  height: 18px;
+  display: block;
+  overflow: visible;
+  color: var(--color-text-light);
+}
+
+.thread-stitch-line {
+  stroke: rgba(255, 255, 255, 0.65);
+  transition: stroke 0.3s ease, stroke-dashoffset 0.6s ease;
+}
+
+.thread-menu-trigger:hover .thread-stitch-line {
+  stroke: #ffffff;
+  animation: trigger-stitch-glide 1.8s linear infinite;
+}
+
+@keyframes trigger-stitch-glide {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 15; }
+}
+
+/* Thread Knots with Eyelet Rings */
+.thread-knot {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.knot-ring {
+  stroke: rgba(255, 255, 255, 0.75);
+  transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+.knot-dot {
+  fill: #ffffff;
+  transition: fill 0.3s ease;
+}
+
+.thread-menu-trigger:hover .knot-start {
+  transform: scale(1.15);
+  transition-delay: 0s;
+}
+
+.thread-menu-trigger:hover .knot-mid {
+  transform: scale(1.25);
+  transition-delay: 0.06s;
+}
+
+.thread-menu-trigger:hover .knot-end {
+  transform: scale(1.15);
+  transition-delay: 0.12s;
+}
+
+.thread-menu-trigger:hover .knot-ring {
+  stroke: #ffffff;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+}
+
+/* ==========================================================================
+   THE THREAD MENU: OPEN STATE (FULL-SCREEN EDITORIAL OVERLAY)
+   ========================================================================== */
+.thread-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(8, 9, 12, 0.985);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.2rem 3.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.5s;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.thread-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Top Bar: Edition Tag & Animated Close Button */
+.thread-overlay-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.10);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.thread-overlay.is-open .thread-overlay-bar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay-brand-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.70rem;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.atelier-edition-label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.atelier-tagline-sep {
+  opacity: 0.4;
+}
+
+/* Animated Close Button */
+.thread-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.4rem 0.6rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.thread-close-btn:hover {
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.close-btn-text {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.close-icon-wrap {
+  width: 22px;
+  height: 22px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-cross-stitch {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stitch-needle {
+  transition: stroke-dashoffset 0.4s ease, stroke 0.3s ease;
+}
+
+.needle-knot {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.thread-close-btn:hover .close-cross-stitch {
+  transform: rotate(90deg);
+}
+
+.thread-close-btn:hover .needle-knot {
+  transform: scale(1.4);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+
+/* ==========================================================================
+   OVERLAY BODY: SPREAD WITH UNFOLDING THREAD SPINE
+   ========================================================================== */
+.thread-overlay-content {
+  display: grid;
+  grid-template-columns: 24px 1fr 340px;
+  gap: 3.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 2.5rem 0;
+  position: relative;
+}
+
+/* Animated Unfolding Loom Stitched Spine */
+.unfolding-thread-spine {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.spine-svg {
+  width: 6px;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.35);
+  overflow: visible;
+}
+
+.spine-thread-path {
+  stroke-dasharray: 5 3.5;
+  stroke-dashoffset: 800;
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.thread-overlay.is-open .spine-thread-path {
+  stroke-dashoffset: 0;
+  animation: spine-thread-glide 20s linear infinite 1.3s;
+}
+
+@keyframes spine-thread-glide {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 85; }
+}
+
+/* Navigation Links Container */
+.thread-links-container {
+  width: 100%;
+}
+
+.thread-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Single Item Structure */
+.thread-nav-item {
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.thread-overlay.is-open .thread-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--item-index) * 0.055s + 0.15s);
+}
+
+.thread-nav-link {
+  display: flex;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--color-text-light);
+  padding: 0.65rem 0;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+/* Dims other items on hover for intense focus */
+.thread-nav-list:hover .thread-nav-link {
+  opacity: 0.32;
+}
+
+.thread-nav-list:hover .thread-nav-link:hover {
+  opacity: 1;
+}
+
+/* Numbering (Subtle, Monospaced Luxury Tracking) */
+.nav-item-num {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.40);
+  margin-right: 2.2rem;
+  min-width: 2.4rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.thread-nav-link:hover .nav-item-num {
+  color: #ffffff;
+  transform: translateX(-4px);
+}
+
+/* Oversized Editorial Typography (Ashford & Lane reference) */
+.nav-item-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              letter-spacing 0.4s ease,
+              color 0.3s ease;
+  white-space: nowrap;
+}
+
+.thread-nav-link:hover .nav-item-title {
+  transform: translateX(14px);
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+/* Atelier Discipline / Subtitle */
+.nav-item-discipline {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  margin-left: auto;
+  padding-left: 2rem;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.thread-nav-link:hover .nav-item-discipline {
+  color: rgba(255, 255, 255, 0.85);
+  transform: translateX(-8px);
+}
+
+/* Thread Hover Line */
+.nav-thread-hover-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.4));
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.thread-nav-link:hover .nav-thread-hover-line {
+  width: 100%;
+}
+
+/* Delicate Thread-Inspired Running-Stitch Divider */
+.nav-item-divider {
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.12) 50%, transparent 50%);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  margin-top: 0.4rem;
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: ATELIER LOOKBOOK PANEL (EDITORIAL)
+   ========================================================================== */
+.thread-overlay-editorial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 3rem;
+  border-left: 1px dashed rgba(255, 255, 255, 0.10);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.thread-overlay.is-open .thread-overlay-editorial {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.motif-rotating-stitch {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 2.2rem;
+  color: rgba(255, 255, 255, 0.35);
+  animation: motif-slow-turn 32s linear infinite;
+}
+
+@keyframes motif-slow-turn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.editorial-stitch-symbol {
+  width: 100%;
+  height: 100%;
+}
+
+.editorial-manifesto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.manifesto-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  color: #ffffff;
+}
+
+.manifesto-body {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+}
+
+.manifesto-specs {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 1rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.spec-label {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.spec-val {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+}
+
+/* Overlay Footer */
+.thread-overlay-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.10);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.35s;
+}
+
+.thread-overlay.is-open .thread-overlay-footer {
+  opacity: 1;
+}
+
+.footer-craft-line {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.30em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.footer-close-hint {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.30);
+}
+
+/* ==========================================================================
+   SCROLL STAGE & INITIAL DARK PRESENTATION
+   ========================================================================== */
+.scroll-stage-container {
+  position: relative;
+  width: 100%;
+  min-height: 220vh; /* Smooth scroll track strictly for the animation */
+  background-color: var(--color-dark-bg);
+}
+
+.hero-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Ethereal Ambient Radial Glow behind Stitch Globe */
+.ambient-glow {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(28px);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  animation: ambient-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-pulse {
+  0% { transform: scale(0.94); opacity: 0.8; }
+  100% { transform: scale(1.06); opacity: 1; }
+}
+
+/* Scroll Invitation Cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-cue-text {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+
+.scroll-cue-line {
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  animation: scroll-line-drop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scroll-line-drop {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ==========================================================================
+   ANIMATED STITCH GLOBE ELEMENT
+   Starts centered, illuminated white/silver, morphs to navbar 'O'
+   ========================================================================== */
+.animated-globe-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--globe-hero-size);
+  height: var(--globe-hero-size);
+  z-index: 1030;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.stitch-globe-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45));
+  transition: filter 0.4s ease;
+  will-change: filter;
+}
+
+/* Tailoring Thread & Stitches Styling */
+.globe-thread-network {
+  transform: rotate(-18deg);
+  transform-origin: 50px 50px;
+  animation: globe-subtle-precession 20s ease-in-out infinite alternate;
+}
+
+/* Very subtle organic 3D precession of the spherical thread cage */
+@keyframes globe-subtle-precession {
+  0% {
+    transform: rotate(-18deg) scale(1);
+  }
+  50% {
+    transform: rotate(-13deg) scale(1.018);
+  }
+  100% {
+    transform: rotate(-22deg) scale(0.985);
+  }
+}
+
+.thread-stitch {
+  stroke: var(--color-stitch-white);
+  transition: stroke 0.45s ease;
+}
+
+/* 1. Outer Seam Stitch Rim (Continuous loop seam glide) */
+.stitch-rim {
+  stroke-dasharray: 4 2.5;
+  animation: weave-rim 22s linear infinite;
+}
+
+@keyframes weave-rim {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 65; /* Multiple of (4 + 2.5 = 6.5) for seamless loop */
+  }
+}
+
+/* 2. Warp Threads (Longitude Meridians - Vertical Weaving) */
+.stitch-warp {
+  animation: weave-warp-vertical 15s linear infinite;
+}
+
+.stitch-warp-prime {
+  stroke-dasharray: 3.5 2.5;
+  animation-duration: 12s;
+}
+
+.stitch-warp-mid {
+  stroke-dasharray: 3.2 2.3;
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
+.stitch-warp-outer {
+  stroke-dasharray: 3 2;
+  animation-duration: 20s;
+}
+
+@keyframes weave-warp-vertical {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 60;
+  }
+}
+
+/* 3. Weft Threads (Latitude Parallels - Horizontal Weaving) */
+.stitch-weft {
+  animation: weave-weft-horizontal 14s linear infinite;
+}
+
+.stitch-weft-equator {
+  stroke-dasharray: 3.2 2;
+  animation-duration: 11s;
+}
+
+.stitch-weft-north {
+  stroke-dasharray: 2.8 1.8;
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+.stitch-weft-south {
+  stroke-dasharray: 2.8 1.8;
+  animation-duration: 17s;
+}
+
+@keyframes weave-weft-horizontal {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -50;
+  }
+}
+
+/* 4. Serpentine Basting Weft across Equator */
+.stitch-wave-weft {
+  stroke-dasharray: 3.5 2.5;
+  animation: weave-basting-wave 13s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes weave-basting-wave {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 48;
+  }
+}
+
+/* 5. Master Tailor's Continuous Sewing Thread */
+.thread-continuous-master {
+  stroke: var(--color-stitch-silver);
+  stroke-dasharray: 7 3 2 3;
+  animation: weave-master-thread 9s linear infinite;
+  transition: stroke 0.45s ease;
+}
+
+@keyframes weave-master-thread {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 60;
+  }
+}
+
+/* 6. Intersection Tack Knots - Subtle thread luster glint */
+.stitch-knot {
+  stroke: var(--color-stitch-white);
+  transition: stroke 0.45s ease;
+  animation: knot-glint 5s ease-in-out infinite alternate;
+}
+
+.knot-west {
+  animation-delay: 1.2s;
+}
+
+.knot-east {
+  animation-delay: 2.4s;
+}
+
+@keyframes knot-glint {
+  0% {
+    opacity: 0.7;
+    stroke-width: 1.2;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 1.7;
+  }
+  100% {
+    opacity: 0.7;
+    stroke-width: 1.2;
+  }
+}
+
+/* Locked / Docked State in Navbar */
+.animated-globe-wrapper.globe-in-navbar .stitch-globe-svg {
+  filter: none;
+}
+
+.animated-globe-wrapper.globe-in-navbar .thread-stitch,
+.animated-globe-wrapper.globe-in-navbar .thread-continuous-master,
+.animated-globe-wrapper.globe-in-navbar .stitch-knot {
+  stroke: var(--color-stitch-dark);
+}
+
+/* Gentle pace retention in navbar for artisanal quality */
+.animated-globe-wrapper.globe-in-navbar .stitch-rim,
+.animated-globe-wrapper.globe-in-navbar .stitch-warp,
+.animated-globe-wrapper.globe-in-navbar .stitch-weft,
+.animated-globe-wrapper.globe-in-navbar .stitch-wave-weft,
+.animated-globe-wrapper.globe-in-navbar .thread-continuous-master {
+  animation-duration: 28s; /* Slower, whisper-quiet micro-movement in navbar */
+}
+
+/* Scroll track spacer strictly for driving the scroll timeline */
+.scroll-track {
+  height: 120vh;
+  width: 100%;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .nav-list {
+    gap: 1.5rem;
+  }
+  .nav-link {
+    font-size: 0.70rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-menu {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  :root {
+    --navbar-height: 72px;
+    --globe-hero-size: 150px;
+    --globe-nav-size: 25px;
+  }
+  
+  .navbar-container {
+    padding: 0 1.5rem;
+  }
+  
+  .logo-letter {
+    font-size: 25px;
+  }
+  
+  .logo-tagline {
+    font-size: 7.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 68px;
+    --globe-hero-size: 130px;
+    --globe-nav-size: 23px;
+  }
+  
+  .navbar-container {
+    padding: 0 1.25rem;
+  }
+  
+  .logo-letter {
+    font-size: 23px;
+    letter-spacing: 0.12em;
+  }
+}
