@@ -1790,6 +1790,776 @@ body.menu-open .hero-statement-container {
 }
 
 /* ==========================================================================
+   FACTORIES SECTION (SECTION 06)
+   - Clean FACTORIES heading in white typography
+   - Three animated numerical highlights in ONE SINGLE HORIZONTAL ROW
+   - Continuously moving horizontal factory gallery (LEFT TO RIGHT)
+   - Minimal white typography category overlay on hover
+   ========================================================================== */
+.factories-section {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  padding: 9rem 0;
+  background-color: var(--color-dark-bg);
+  overflow: hidden;
+}
+
+.factories-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.factories-header {
+  margin-bottom: 2rem;
+}
+
+.factories-kicker {
+  font-family: var(--font-sub);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 229, 0.58);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.factories-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Three Animated Numerical Highlights in ONE SINGLE HORIZONTAL ROW */
+.factories-counters-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.factories-counter-item {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: left;
+}
+
+.counter-value {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  white-space: nowrap;
+  margin-bottom: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.counter-label {
+  font-family: var(--font-sub);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 229, 0.65);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Factory Photograph Gallery (Continuously moving Left to Right) */
+.factories-gallery-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0;
+  margin-top: 4.5rem;
+  user-select: none;
+}
+
+.factories-gallery-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-right 110s linear infinite;
+}
+
+.factories-gallery-viewport:hover .factories-gallery-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.factories-gallery-group {
+  display: flex;
+  gap: 2.2rem;
+  padding-left: 2.2rem;
+  flex-shrink: 0;
+}
+
+/* Individual Factory Photo Item */
+.factory-item {
+  position: relative;
+  height: 380px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--color-dark-surface);
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.factory-img {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.factory-item:hover .factory-img,
+.factory-item:focus-visible .factory-img,
+.factory-item.is-active .factory-img {
+  transform: scale(1.04);
+}
+
+/* Minimal White Typography Category Overlay on Hover */
+.factory-caption {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 10, 13, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s;
+  pointer-events: none;
+}
+
+.factory-item:hover .factory-caption,
+.factory-item:focus-visible .factory-caption,
+.factory-item.is-active .factory-caption {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.factory-category-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  line-height: 1.35;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 960px) {
+  .factories-section {
+    padding: 7rem 0;
+  }
+
+  .factories-container {
+    padding: 0 2.5rem;
+  }
+
+  .factories-counters-row {
+    gap: 1.8rem;
+    margin-top: 3.2rem;
+  }
+
+  .counter-value {
+    font-size: clamp(1.4rem, 2.7vw, 2.1rem);
+  }
+
+  .factory-item {
+    height: 310px;
+  }
+
+  .factories-gallery-group {
+    gap: 1.6rem;
+    padding-left: 1.6rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .factories-counters-row {
+    flex-direction: column;
+    gap: 2.2rem;
+    margin-top: 2.8rem;
+  }
+
+  .counter-value {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .factory-item {
+    height: 260px;
+  }
+
+  .factories-gallery-group {
+    gap: 1.2rem;
+    padding-left: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .factories-section {
+    padding: 5.5rem 0;
+  }
+
+  .factories-container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   SECTION 07 — CONTACT US
+   - Interactive Golden World Map inspired by reference
+   - Deep black background (#090a0d) with warm amber and golden lighting
+   - Three glowing location markers: India, USA, China
+   - Animated connection arcs with traveling light photons
+   - Interactive office showcase synchronized with map markers
+   - Executive communications email links and tel phone links
+   - Google Maps directions links
+   ========================================================================== */
+.contact-section {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  padding: 8.5rem 0 3.5rem 0;
+  background-color: var(--color-dark-bg);
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.contact-header {
+  margin-bottom: 2.2rem;
+  text-align: left;
+}
+
+.contact-kicker {
+  font-family: var(--font-sub);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 229, 0.58);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.contact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Quick Location Selector Tabs */
+.contact-location-tabs {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.location-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.35rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 215, 120, 0.18);
+  border-radius: 40px;
+  color: rgba(241, 237, 229, 0.65);
+  font-family: var(--font-sub);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.location-tab:hover {
+  border-color: rgba(255, 215, 120, 0.45);
+  color: #F1EDE5;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.location-tab.is-active {
+  border-color: #FFA826;
+  background: rgba(255, 168, 38, 0.14);
+  color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(255, 168, 38, 0.25);
+}
+
+.tab-index {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  font-family: var(--font-sans);
+}
+
+.tab-badge {
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(255, 168, 38, 0.3);
+  color: #FFE082;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Golden World Map Stage */
+.contact-map-stage {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #090a0d;
+  border: 1px solid rgba(255, 215, 120, 0.1);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.9);
+  margin-bottom: 3.5rem;
+}
+
+.contact-map-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1400 / 700;
+  background: #090a0d url('/images/world-map-golden.jpg') no-repeat center / contain;
+}
+
+.contact-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Arcs & Photons */
+.map-arc-bg {
+  fill: none;
+  stroke: rgba(212, 175, 55, 0.16);
+  stroke-width: 1.2;
+}
+
+.map-arc-core {
+  fill: none;
+  stroke: url(#golden-arc-grad);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  filter: url(#arc-glow-filter);
+}
+
+.traveling-photon {
+  filter: drop-shadow(0 0 6px #FFFFFF) drop-shadow(0 0 12px #FFB300);
+}
+
+/* Interactive Location Markers */
+.interactive-marker {
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s ease;
+}
+
+.marker-touch-hitbox {
+  pointer-events: all;
+}
+
+.marker-pulse-ring {
+  fill: none;
+  stroke: #FFA826;
+  stroke-width: 1.5;
+  transform-origin: center;
+  opacity: 0.65;
+}
+
+.ring-primary {
+  animation: pulseRing 3.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.ring-secondary {
+  animation: pulseRing 3.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite 1.6s;
+}
+
+@keyframes pulseRing {
+  0% {
+    r: 6px;
+    opacity: 0.9;
+  }
+  100% {
+    r: 36px;
+    opacity: 0;
+  }
+}
+
+.flare-ray {
+  stroke: rgba(255, 240, 190, 0.75);
+  stroke-width: 1;
+  stroke-linecap: round;
+  transition: all 0.3s ease;
+}
+
+.interactive-marker:hover .flare-ray,
+.interactive-marker.is-active .flare-ray {
+  stroke: #FFFFFF;
+  stroke-width: 1.6;
+  filter: drop-shadow(0 0 5px #FFD54F);
+}
+
+.marker-core-glow {
+  fill: #FFB300;
+  filter: drop-shadow(0 0 10px #FFC107);
+}
+
+.marker-core-pin {
+  fill: #FFFFFF;
+}
+
+.marker-label-box {
+  fill: rgba(9, 10, 13, 0.88);
+  stroke: rgba(255, 193, 7, 0.35);
+  stroke-width: 1;
+  transition: all 0.3s ease;
+}
+
+.marker-label-text {
+  font-family: var(--font-sub);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  fill: #F1EDE5;
+  text-anchor: middle;
+  dominant-baseline: central;
+  transition: fill 0.3s ease;
+}
+
+.interactive-marker:hover .marker-label-box,
+.interactive-marker.is-active .marker-label-box {
+  fill: #FFA826;
+  stroke: #FFE082;
+  filter: drop-shadow(0 2px 10px rgba(255, 168, 38, 0.55));
+}
+
+.interactive-marker:hover .marker-label-text,
+.interactive-marker.is-active .marker-label-text {
+  fill: #090a0d;
+  font-weight: 700;
+}
+
+/* Office Details Showcase */
+.contact-details-showcase {
+  position: relative;
+  min-height: 220px;
+  margin-bottom: 4rem;
+}
+
+.office-card {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-left: 2px solid #FFA826;
+  padding: 0.5rem 0 0.5rem 2.2rem;
+  max-width: 880px;
+}
+
+.office-card.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.office-country-kicker {
+  font-family: var(--font-sub);
+  font-size: 0.76rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #FFA826;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.office-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.25;
+}
+
+.office-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.office-detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.detail-label {
+  font-family: var(--font-sub);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 229, 0.5);
+}
+
+.office-address {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-style: normal;
+  color: #F1EDE5;
+  line-height: 1.65;
+  max-width: 680px;
+  letter-spacing: 0.01em;
+}
+
+.office-phone-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.office-phone-link {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.35);
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.04em;
+}
+
+.office-phone-link:hover {
+  color: #FFA826;
+  border-bottom-color: #FFA826;
+}
+
+.phone-separator {
+  color: rgba(241, 237, 229, 0.4);
+}
+
+.office-card-action {
+  margin-top: 0.6rem;
+}
+
+.office-directions-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sub);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #FFA826;
+  text-decoration: none;
+  border: 1px solid rgba(255, 168, 38, 0.35);
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.35s ease;
+}
+
+.office-directions-link:hover {
+  background: #FFA826;
+  color: #090a0d;
+  border-color: #FFA826;
+}
+
+/* Email Contact Information Area */
+.contact-emails-section {
+  border-top: 1px solid rgba(241, 237, 229, 0.12);
+  padding-top: 3.2rem;
+  margin-top: 1rem;
+}
+
+.contact-emails-kicker {
+  font-family: var(--font-sub);
+  font-size: 0.76rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 229, 0.52);
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.contact-emails-container {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.contact-email-item {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  color: #F1EDE5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(241, 237, 229, 0.25);
+  padding-bottom: 3px;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.contact-email-item:hover {
+  color: #FFA826;
+  border-bottom-color: #FFA826;
+}
+
+.email-bullet {
+  color: rgba(255, 168, 38, 0.6);
+  font-size: 1.2rem;
+}
+
+/* Minimal Site Footer */
+.novus-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3.5rem 0;
+  margin-top: 5rem;
+}
+
+.footer-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.footer-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.footer-tagline {
+  font-family: var(--font-sub);
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  color: rgba(241, 237, 229, 0.45);
+  text-transform: uppercase;
+}
+
+.footer-copyright {
+  font-family: var(--font-sub);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: rgba(241, 237, 229, 0.4);
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .contact-container {
+    padding: 0 2.5rem;
+  }
+
+  .footer-inner {
+    padding: 0 2.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .contact-section {
+    padding: 5.5rem 0 2.5rem 0;
+  }
+
+  .contact-container {
+    padding: 0 1.5rem;
+  }
+
+  .contact-location-tabs {
+    gap: 0.6rem;
+  }
+
+  .location-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.72rem;
+  }
+
+  .contact-map-stage {
+    border-radius: 4px;
+    margin-bottom: 2.5rem;
+  }
+
+  .office-card {
+    padding-left: 1.2rem;
+  }
+
+  .contact-emails-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .email-bullet {
+    display: none;
+  }
+
+  .footer-inner {
+    padding: 0 1.5rem;
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE BREAKPOINTS (THE THREAD MENU & NAVBAR)
    ========================================================================== */
 @media (max-width: 1080px) {

@@ -463,6 +463,168 @@
     });
   }
 
+  // ==========================================================================
+  // FACTORIES SECTION CONTROLLER (ANIMATED COUNTERS & MARQUEE INTERACTION)
+  // ==========================================================================
+  function setupFactoriesSection() {
+    const factoriesSection = document.getElementById('factories');
+    if (!factoriesSection) return;
+
+    let countersAnimated = false;
+    const counterElements = factoriesSection.querySelectorAll('.counter-value');
+
+    function animateCounters() {
+      if (countersAnimated) return;
+      countersAnimated = true;
+
+      const duration = 1900; // 1.9s smooth counting animation
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // easeOutCubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        counterElements.forEach((el) => {
+          const start = parseFloat(el.getAttribute('data-start'));
+          const end = parseFloat(el.getAttribute('data-end'));
+          const prefix = el.getAttribute('data-prefix') || '';
+          const suffix = el.getAttribute('data-suffix') || '';
+          const isLocale = el.getAttribute('data-format') === 'locale';
+
+          const currentVal = Math.round(start + (end - start) * ease);
+          const formattedVal = isLocale ? currentVal.toLocaleString('en-US') : currentVal;
+
+          el.textContent = `${prefix}${formattedVal}${suffix}`;
+        });
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          // Guarantee exact target figures
+          counterElements.forEach((el) => {
+            const end = parseFloat(el.getAttribute('data-end'));
+            const prefix = el.getAttribute('data-prefix') || '';
+            const suffix = el.getAttribute('data-suffix') || '';
+            const isLocale = el.getAttribute('data-format') === 'locale';
+            const formattedVal = isLocale ? end.toLocaleString('en-US') : end;
+            el.textContent = `${prefix}${formattedVal}${suffix}`;
+          });
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              observer.unobserve(factoriesSection);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+      observer.observe(factoriesSection);
+    } else {
+      animateCounters();
+    }
+
+    // Touch support for mobile factory gallery item captions
+    const factoryItems = factoriesSection.querySelectorAll('.factory-item');
+    factoryItems.forEach((item) => {
+      item.addEventListener('click', function () {
+        const isActive = this.classList.contains('is-active');
+        factoryItems.forEach((it) => it.classList.remove('is-active'));
+        if (!isActive) {
+          this.classList.add('is-active');
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.factory-item')) {
+        factoryItems.forEach((it) => it.classList.remove('is-active'));
+      }
+    });
+  }
+
+  // ==========================================================================
+  // SECTION 07 — CONTACT US CONTROLLER (INTERACTIVE GOLDEN MAP & OFFICES)
+  // ==========================================================================
+  function setupContactSection() {
+    const contactSection = document.getElementById('contact-us');
+    if (!contactSection) return;
+
+    const markers = contactSection.querySelectorAll('.interactive-marker');
+    const tabs = contactSection.querySelectorAll('.location-tab');
+    const officeCards = contactSection.querySelectorAll('.office-card');
+
+    function setActiveLocation(locationId, shouldScroll) {
+      if (!locationId) return;
+
+      // Update Tabs
+      tabs.forEach((tab) => {
+        const isMatch = tab.getAttribute('data-target') === locationId;
+        tab.classList.toggle('is-active', isMatch);
+        tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      // Update Map Markers
+      markers.forEach((marker) => {
+        const isMatch = marker.getAttribute('data-location') === locationId;
+        marker.classList.toggle('is-active', isMatch);
+      });
+
+      // Update Office Showcase with smooth fade transition
+      officeCards.forEach((card) => {
+        const isMatch = card.getAttribute('data-location') === locationId;
+        if (isMatch) {
+          card.classList.add('is-active');
+        } else {
+          card.classList.remove('is-active');
+        }
+      });
+
+      // On mobile screens, scroll smoothly to the office card if clicked from marker
+      if (shouldScroll && window.innerWidth <= 768) {
+        const activeCard = contactSection.querySelector(`.office-card[data-location="${locationId}"]`);
+        if (activeCard) {
+          activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
+
+    // Attach Marker Click & Keyboard Events
+    markers.forEach((marker) => {
+      marker.addEventListener('click', function (e) {
+        e.preventDefault();
+        const loc = this.getAttribute('data-location');
+        setActiveLocation(loc, true);
+      });
+
+      marker.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const loc = this.getAttribute('data-location');
+          setActiveLocation(loc, true);
+        }
+      });
+    });
+
+    // Attach Tab Button Click Events
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', function () {
+        const loc = this.getAttribute('data-target');
+        setActiveLocation(loc, false);
+      });
+    });
+  }
+
   // Initial setup on DOM ready
   function init() {
     setupThreadMenu();
@@ -471,6 +633,8 @@
     setupLeadershipSection();
     setupTechPartnersSection();
     setupProductsGallery();
+    setupFactoriesSection();
+    setupContactSection();
 
     // Initial paint
     updateScrollAnimation();
