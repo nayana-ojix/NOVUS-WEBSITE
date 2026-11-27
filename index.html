@@ -169,6 +169,14 @@
         <div class="scroll-cue-line"></div>
       </div>
 
+      <!-- Editorial Philosophy Statement (Revealed after globe reaches navbar position) -->
+      <div class="hero-statement-container" id="hero-statement-container" aria-hidden="true">
+        <p class="hero-statement">
+          <span class="statement-line">GOOD PRODUCT IS EASY TO SELL,</span>
+          <span class="statement-line">GREAT PRODUCT SELLS ITSELF</span>
+        </p>
+      </div>
+
     </div>
 
     <!-- The Animated Stitch Globe Element (starts at center, morphs to navbar) -->
@@ -259,6 +267,61 @@
     <div class="scroll-track" id="scroll-track"></div>
 
   </main>
+
+  <!-- ============================================================
+       ABOUT US SECTION
+       Clean, premium two-column layout:
+       Left: Who We Are | What We Do | Our Capability
+       Right: Dynamic information panels with subtle transition
+       ============================================================ -->
+  <section class="about-section" id="about-us" aria-label="About Us">
+    <!-- Background Video Layer: Option 4 – Blue Silk Movement -->
+    <div class="about-video-container" aria-hidden="true">
+      <video class="about-video" id="about-video" src="/videos/about-blue-silk.mp4" autoplay muted loop
+        playsinline webkit-playsinline preload="auto"></video>
+      <div class="about-video-overlay" aria-hidden="true"></div>
+    </div>
+
+    <div class="about-container">
+      <!-- Left Column: Headlines -->
+      <div class="about-headlines-col" role="tablist" aria-label="About Us Categories">
+        <button type="button" class="about-headline is-active" id="tab-who-we-are" role="tab"
+          aria-selected="true" aria-controls="panel-who-we-are" data-index="0">
+          Who We Are
+        </button>
+        <button type="button" class="about-headline" id="tab-what-we-do" role="tab"
+          aria-selected="false" aria-controls="panel-what-we-do" data-index="1">
+          What We Do
+        </button>
+        <button type="button" class="about-headline" id="tab-our-capability" role="tab"
+          aria-selected="false" aria-controls="panel-our-capability" data-index="2">
+          Our Capability
+        </button>
+      </div>
+
+      <!-- Right Column: Information -->
+      <div class="about-content-col">
+        <div class="about-panel is-active" id="panel-who-we-are" role="tabpanel"
+          aria-labelledby="tab-who-we-are" data-index="0">
+          <p class="about-description">
+            NOVUS is an R&amp;D and global marketing company focused on advancing the apparel industry through science, technology and engineering.
+          </p>
+        </div>
+        <div class="about-panel" id="panel-what-we-do" role="tabpanel"
+          aria-labelledby="tab-what-we-do" data-index="1">
+          <p class="about-description">
+            We bring together scientific thinking, technological innovation and engineering expertise to develop smarter, more effective apparel solutions.
+          </p>
+        </div>
+        <div class="about-panel" id="panel-our-capability" role="tabpanel"
+          aria-labelledby="tab-our-capability" data-index="2">
+          <p class="about-description">
+            From initial design to finished product, we deliver integrated apparel solutions, connecting creativity, technical expertise and execution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>

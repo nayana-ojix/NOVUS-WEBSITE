@@ -14,6 +14,7 @@
   const ambientGlow = document.getElementById('ambient-glow');
   const scrollCue = document.getElementById('scroll-cue');
   const videoContainer = document.getElementById('hero-video-container');
+  const heroStatement = document.getElementById('hero-statement-container');
 
   // The Thread Menu Elements
   const threadMenuTrigger = document.getElementById('thread-menu-trigger');
@@ -101,6 +102,15 @@
       brandLogo.classList.remove('logo-revealed');
       navbar.classList.remove('navbar-scrolled');
       animatedGlobe.classList.remove('globe-in-navbar');
+    }
+
+    // Reveal editorial statement at absolute center once globe reaches final navbar position
+    if (heroStatement) {
+      if (rawProgress >= 0.95) {
+        heroStatement.classList.add('is-visible');
+      } else {
+        heroStatement.classList.remove('is-visible');
+      }
     }
 
     ticking = false;
@@ -307,10 +317,83 @@
     }, 1500);
   }
 
+  // ==========================================================================
+  // ABOUT US SECTION CONTROLLER (STAGGERED ENTRANCE & HEADLINE TABS)
+  // ==========================================================================
+  function setupAboutSection() {
+    const aboutSection = document.getElementById('about-us');
+    if (!aboutSection) return;
+
+    // Ensure About Us background video plays smoothly and continuously
+    const aboutVideo = document.getElementById('about-video');
+    if (aboutVideo) {
+      aboutVideo.muted = true;
+      const playPromise = aboutVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const unlock = () => {
+            aboutVideo.play().catch(() => { });
+            window.removeEventListener('scroll', unlock);
+            window.removeEventListener('click', unlock);
+            window.removeEventListener('touchstart', unlock);
+          };
+          window.addEventListener('scroll', unlock, { once: true });
+          window.addEventListener('click', unlock, { once: true });
+          window.addEventListener('touchstart', unlock, { once: true });
+        });
+      }
+    }
+
+    // Trigger headline entrance animation only once when section enters viewport
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              aboutSection.classList.add('is-revealed');
+              observer.unobserve(aboutSection);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(aboutSection);
+    } else {
+      aboutSection.classList.add('is-revealed');
+    }
+
+    // Headline click interactions
+    const headlines = aboutSection.querySelectorAll('.about-headline');
+    const panels = aboutSection.querySelectorAll('.about-panel');
+
+    headlines.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const targetIdx = this.getAttribute('data-index');
+
+        headlines.forEach((h) => {
+          h.classList.remove('is-active');
+          h.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach((p) => {
+          p.classList.remove('is-active');
+        });
+
+        this.classList.add('is-active');
+        this.setAttribute('aria-selected', 'true');
+
+        const targetPanel = aboutSection.querySelector(`.about-panel[data-index="${targetIdx}"]`);
+        if (targetPanel) {
+          targetPanel.classList.add('is-active');
+        }
+      });
+    });
+  }
+
   // Initial setup on DOM ready
   function init() {
     setupThreadMenu();
     setupHeroVideoCrossfade();
+    setupAboutSection();
 
     // Initial paint
     updateScrollAnimation();
