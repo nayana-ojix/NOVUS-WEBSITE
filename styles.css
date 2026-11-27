@@ -1587,6 +1587,209 @@ body.menu-open .hero-statement-container {
 }
 
 /* ==========================================================================
+   DESIGN & PRODUCTS SECTION
+   Continuously moving horizontal photo gallery (Right to Left)
+   Seamless infinite loop with desktop hover pause & category overlay
+   ========================================================================== */
+.products-section {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  padding: 9rem 0;
+  background-color: var(--color-dark-bg);
+  overflow: hidden;
+}
+
+.products-header {
+  padding: 0 4rem 3.5rem 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.products-kicker {
+  font-family: var(--font-sub);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 229, 0.58);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.products-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-weight: 400;
+  color: #F1EDE5; /* Warm Ivory */
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Gallery Viewport & Infinite Marquee Track */
+.products-gallery-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+.products-gallery-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-left 45s linear infinite;
+}
+
+.products-gallery-viewport:hover .products-gallery-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.products-gallery-group {
+  display: flex;
+  gap: 2.2rem;
+  padding-right: 2.2rem;
+  flex-shrink: 0;
+}
+
+/* Gallery Item */
+.gallery-item {
+  position: relative;
+  height: 400px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--color-dark-surface);
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.gallery-img {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.gallery-item:hover .gallery-img,
+.gallery-item:focus-visible .gallery-img,
+.gallery-item.is-active .gallery-img {
+  transform: scale(1.04);
+}
+
+/* Humanless apparel & fabric framing */
+.gallery-item-bottoms .gallery-img {
+  object-position: center 96%;
+  transform: scale(1.18);
+}
+
+.gallery-item-bottoms:hover .gallery-img,
+.gallery-item-bottoms:focus-visible .gallery-img,
+.gallery-item-bottoms.is-active .gallery-img {
+  transform: scale(1.22);
+}
+
+.gallery-item-greige .gallery-img {
+  object-position: center 10%;
+}
+
+.gallery-item-greige:hover .gallery-img,
+.gallery-item-greige:focus-visible .gallery-img,
+.gallery-item-greige.is-active .gallery-img {
+  transform: scale(1.04);
+}
+
+/* Category Name Hover Overlay */
+.gallery-caption {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 10, 13, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.45s;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-caption,
+.gallery-item:focus-visible .gallery-caption,
+.gallery-item.is-active .gallery-caption {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-category-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F1EDE5; /* Warm Ivory */
+  line-height: 1.35;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 960px) {
+  .products-section {
+    padding: 7rem 0;
+  }
+
+  .products-header {
+    padding: 0 2.5rem 2.8rem 2.5rem;
+  }
+
+  .gallery-item {
+    height: 330px;
+  }
+
+  .products-gallery-group {
+    gap: 1.6rem;
+    padding-right: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-section {
+    padding: 5.5rem 0;
+  }
+
+  .products-header {
+    padding: 0 1.5rem 2.2rem 1.5rem;
+  }
+
+  .gallery-item {
+    height: 270px;
+  }
+
+  .products-gallery-group {
+    gap: 1.2rem;
+    padding-right: 1.2rem;
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE BREAKPOINTS (THE THREAD MENU & NAVBAR)
    ========================================================================== */
 @media (max-width: 1080px) {

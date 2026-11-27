@@ -414,6 +414,175 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       DESIGN & PRODUCTS SECTION
+       Continuously moving horizontal photo gallery (Right to Left)
+       Seamless infinite loop with hover pause and category name overlay
+       ============================================================ -->
+  <section class="products-section" id="design-products" aria-label="Design and Products">
+    <div class="products-header">
+      <span class="products-kicker">PORTFOLIO</span>
+      <h2 class="products-title">DESIGN &amp; PRODUCTS</h2>
+    </div>
+
+    <!-- Continuous Infinite Marquee Gallery -->
+    <div class="products-gallery-viewport">
+      <div class="products-gallery-track">
+
+        <!-- Set 1: Main Category Items -->
+        <div class="products-gallery-group">
+          <!-- 1. Shirts -->
+          <figure class="gallery-item gallery-item-shirts" tabindex="0">
+            <img src="https://images.squarespace-cdn.com/content/v1/56dbed1ae707eb815a773875/1527332242639-0YPYTX7JIA7RHLDQ00C1/The-World%27s-Finest-Bespoke-Shirting-Alumo-%26-Magnus-%26-Novus.jpg"
+              onerror="this.src='/images/products/img2-shirts.jpg'"
+              alt="Bespoke Shirting" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Shirts</span>
+            </figcaption>
+          </figure>
+
+          <!-- 2. Bottoms -->
+          <figure class="gallery-item gallery-item-bottoms" tabindex="0">
+            <img src="https://dtcralphlauren.scene7.com/is/image/PoloGSI/s7-AI211A96723002_alternate10?$rl_4x5_pdp$"
+              onerror="this.src='/images/products/img1-bottoms.jpg'"
+              alt="Tailored Bottoms" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Bottoms</span>
+            </figcaption>
+          </figure>
+
+          <!-- 3. Activewear -->
+          <figure class="gallery-item gallery-item-activewear" tabindex="0">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUjb4hBFSkE-WBwRjzS0vWIk0zER0tOtO2-wT-4Pt8A&s=10"
+              onerror="this.src='/images/products/img3-activewear.jpg'"
+              alt="Activewear Jacket" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Activewear</span>
+            </figcaption>
+          </figure>
+
+          <!-- 4. Greige Fabrics -->
+          <figure class="gallery-item gallery-item-greige" tabindex="0">
+            <img src="https://novusapparelmanufacturer.com/images/backgrounds/bg-fabric-wall-bg.jpg"
+              onerror="this.src='/images/products/img4-greige-fabrics.jpg'"
+              alt="Greige Fabric Rolls" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Greige Fabrics</span>
+            </figcaption>
+          </figure>
+
+          <!-- 5. Piece-Dyed Fabrics -->
+          <figure class="gallery-item gallery-item-piece-dyed" tabindex="0">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp0Bz0przVCXWC-rGxl3KJ7TK8DeK6JHebDRp9J6Ep94aDQfkSKYFE5XoD&s=10"
+              onerror="this.src='/images/products/img6-piece-dyed.jpg'"
+              alt="Piece-Dyed Fabric" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Piece-Dyed Fabrics</span>
+            </figcaption>
+          </figure>
+
+          <!-- 6. Yarn-Dyed Fabrics -->
+          <figure class="gallery-item gallery-item-yarn-dyed" tabindex="0">
+            <img src="https://novusapparels.com/img/factories/2.jpg"
+              onerror="this.src='/images/products/img5-yarn-dyed.jpg'"
+              alt="Yarn Spinning &amp; Dyed Spools" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Yarn-Dyed Fabrics</span>
+            </figcaption>
+          </figure>
+
+          <!-- 7. Fabric Textures & Finishes -->
+          <figure class="gallery-item gallery-item-textures" tabindex="0">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4GZuiNKJtmfelZ8gK51aZVVB-e72pKiMTKmBNwmNv_Zf31RBaEBFDvZI&s=10"
+              onerror="this.src='/images/products/img7-textures-finishes.jpg'"
+              alt="Fabric Textures &amp; Finishes" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Fabric Textures &amp; Finishes</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Set 2: Duplicate Set for Seamless Infinite Loop -->
+        <div class="products-gallery-group" aria-hidden="true">
+          <!-- 1. Shirts -->
+          <figure class="gallery-item gallery-item-shirts" tabindex="-1">
+            <img src="https://images.squarespace-cdn.com/content/v1/56dbed1ae707eb815a773875/1527332242639-0YPYTX7JIA7RHLDQ00C1/The-World%27s-Finest-Bespoke-Shirting-Alumo-%26-Magnus-%26-Novus.jpg"
+              onerror="this.src='/images/products/img2-shirts.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Shirts</span>
+            </figcaption>
+          </figure>
+
+          <!-- 2. Bottoms -->
+          <figure class="gallery-item gallery-item-bottoms" tabindex="-1">
+            <img src="https://dtcralphlauren.scene7.com/is/image/PoloGSI/s7-AI211A96723002_alternate10?$rl_4x5_pdp$"
+              onerror="this.src='/images/products/img1-bottoms.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Bottoms</span>
+            </figcaption>
+          </figure>
+
+          <!-- 3. Activewear -->
+          <figure class="gallery-item gallery-item-activewear" tabindex="-1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUjb4hBFSkE-WBwRjzS0vWIk0zER0tOtO2-wT-4Pt8A&s=10"
+              onerror="this.src='/images/products/img3-activewear.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Activewear</span>
+            </figcaption>
+          </figure>
+
+          <!-- 4. Greige Fabrics -->
+          <figure class="gallery-item gallery-item-greige" tabindex="-1">
+            <img src="https://novusapparelmanufacturer.com/images/backgrounds/bg-fabric-wall-bg.jpg"
+              onerror="this.src='/images/products/img4-greige-fabrics.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Greige Fabrics</span>
+            </figcaption>
+          </figure>
+
+          <!-- 5. Piece-Dyed Fabrics -->
+          <figure class="gallery-item gallery-item-piece-dyed" tabindex="-1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp0Bz0przVCXWC-rGxl3KJ7TK8DeK6JHebDRp9J6Ep94aDQfkSKYFE5XoD&s=10"
+              onerror="this.src='/images/products/img6-piece-dyed.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Piece-Dyed Fabrics</span>
+            </figcaption>
+          </figure>
+
+          <!-- 6. Yarn-Dyed Fabrics -->
+          <figure class="gallery-item gallery-item-yarn-dyed" tabindex="-1">
+            <img src="https://novusapparels.com/img/factories/2.jpg"
+              onerror="this.src='/images/products/img5-yarn-dyed.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Yarn-Dyed Fabrics</span>
+            </figcaption>
+          </figure>
+
+          <!-- 7. Fabric Textures & Finishes -->
+          <figure class="gallery-item gallery-item-textures" tabindex="-1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4GZuiNKJtmfelZ8gK51aZVVB-e72pKiMTKmBNwmNv_Zf31RBaEBFDvZI&s=10"
+              onerror="this.src='/images/products/img7-textures-finishes.jpg'"
+              alt="" class="gallery-img" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-category-name">Fabric Textures &amp; Finishes</span>
+            </figcaption>
+          </figure>
+        </div>
+              <span class="gallery-category-name">Fabric Textures &amp; Finishes</span>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <script src="script.js"></script>
 </body>
 

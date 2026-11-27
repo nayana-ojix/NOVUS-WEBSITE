@@ -439,6 +439,30 @@
     }
   }
 
+  // ==========================================================================
+  // DESIGN & PRODUCTS GALLERY CONTROLLER (TOUCH TOGGLE FOR MOBILE)
+  // ==========================================================================
+  function setupProductsGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    if (!galleryItems.length) return;
+
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', function () {
+        const isActive = this.classList.contains('is-active');
+        galleryItems.forEach((it) => it.classList.remove('is-active'));
+        if (!isActive) {
+          this.classList.add('is-active');
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.gallery-item')) {
+        galleryItems.forEach((it) => it.classList.remove('is-active'));
+      }
+    });
+  }
+
   // Initial setup on DOM ready
   function init() {
     setupThreadMenu();
@@ -446,6 +470,7 @@
     setupAboutSection();
     setupLeadershipSection();
     setupTechPartnersSection();
+    setupProductsGallery();
 
     // Initial paint
     updateScrollAnimation();
