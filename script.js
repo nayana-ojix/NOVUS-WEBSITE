@@ -414,12 +414,38 @@
     });
   }
 
+  // ==========================================================================
+  // TECHNOLOGY PARTNERS SECTION CONTROLLER (SCROLL REVEAL & IMAGE ZOOM)
+  // ==========================================================================
+  function setupTechPartnersSection() {
+    const techSection = document.getElementById('technology-partners');
+    if (!techSection) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              techSection.classList.add('is-revealed');
+              observer.unobserve(techSection);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+      observer.observe(techSection);
+    } else {
+      techSection.classList.add('is-revealed');
+    }
+  }
+
   // Initial setup on DOM ready
   function init() {
     setupThreadMenu();
     setupHeroVideoCrossfade();
     setupAboutSection();
     setupLeadershipSection();
+    setupTechPartnersSection();
 
     // Initial paint
     updateScrollAnimation();
