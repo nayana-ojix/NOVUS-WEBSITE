@@ -389,11 +389,37 @@
     });
   }
 
+  // ==========================================================================
+  // LEADERSHIP SECTION CONTROLLER (INDEPENDENT TAP-TO-REVEAL FOR MOBILE)
+  // ==========================================================================
+  function setupLeadershipSection() {
+    const founderCards = document.querySelectorAll('.founder-card');
+    if (!founderCards.length) return;
+
+    founderCards.forEach((card) => {
+      card.addEventListener('click', function (e) {
+        const isActive = this.classList.contains('is-active');
+        founderCards.forEach((c) => c.classList.remove('is-active'));
+        if (!isActive) {
+          this.classList.add('is-active');
+        }
+      });
+    });
+
+    // Close overlay on click outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.founder-card')) {
+        founderCards.forEach((c) => c.classList.remove('is-active'));
+      }
+    });
+  }
+
   // Initial setup on DOM ready
   function init() {
     setupThreadMenu();
     setupHeroVideoCrossfade();
     setupAboutSection();
+    setupLeadershipSection();
 
     // Initial paint
     updateScrollAnimation();
