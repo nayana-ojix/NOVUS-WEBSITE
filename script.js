@@ -627,17 +627,21 @@
 
   // Initial setup on DOM ready
   function init() {
-    setupThreadMenu();
-    setupHeroVideoCrossfade();
-    setupAboutSection();
-    setupLeadershipSection();
-    setupTechPartnersSection();
-    setupProductsGallery();
-    setupFactoriesSection();
-    setupContactSection();
+    // Initial paint: position globe immediately
+    try {
+      updateScrollAnimation();
+    } catch (err) {
+      console.error('Scroll animation init error:', err);
+    }
 
-    // Initial paint
-    updateScrollAnimation();
+    try { setupThreadMenu(); } catch (e) { console.error(e); }
+    try { setupHeroVideoCrossfade(); } catch (e) { console.error(e); }
+    try { setupAboutSection(); } catch (e) { console.error(e); }
+    try { setupLeadershipSection(); } catch (e) { console.error(e); }
+    try { setupTechPartnersSection(); } catch (e) { console.error(e); }
+    try { setupProductsGallery(); } catch (e) { console.error(e); }
+    try { setupFactoriesSection(); } catch (e) { console.error(e); }
+    try { setupContactSection(); } catch (e) { console.error(e); }
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);

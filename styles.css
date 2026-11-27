@@ -818,6 +818,7 @@ body.menu-open .hero-statement-container {
   pointer-events: none;
   transform-origin: center center;
   will-change: transform, opacity;
+  transform: translate3d(calc(50vw - var(--globe-hero-size) / 2), calc(50vh - var(--globe-hero-size) / 2), 0);
 }
 
 .stitch-globe-svg {
