@@ -8,8 +8,12 @@
 
   <!-- Typography Reference: Ashford Lane Bespoke Tailoring Atelier -->
   <!-- Cormorant Garamond (Editorial Serif) + Tenor Sans & Montserrat (Refined Luxury Sans) -->
+  <!-- Preconnect & DNS-Prefetch for Fast CDN Asset Delivery -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://dtcralphlauren.scene7.com">
+  <link rel="dns-prefetch" href="https://images.squarespace-cdn.com">
+  <link rel="dns-prefetch" href="https://encrypted-tbn0.gstatic.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Tenor+Sans&display=swap"
     rel="stylesheet">
@@ -154,7 +158,7 @@
           playsinline webkit-playsinline preload="auto"></video>
         <!-- Video 02: Industrial Fabric Manufacturing Process in Action -->
         <video class="hero-video" id="hero-video-2" src="/videos/hero-fabric-manufacturing.mp4" muted playsinline
-          webkit-playsinline preload="auto"></video>
+          webkit-playsinline preload="none"></video>
 
         <!-- Industrial Dark Cinematic Atmosphere Overlay -->
         <div class="hero-video-overlay" aria-hidden="true"></div>
@@ -277,8 +281,8 @@
   <section class="about-section" id="about-us" aria-label="About Us">
     <!-- Background Video Layer: Option 4 – Blue Silk Movement -->
     <div class="about-video-container" aria-hidden="true">
-      <video class="about-video" id="about-video" src="/videos/about-blue-silk.mp4" autoplay muted loop
-        playsinline webkit-playsinline preload="auto"></video>
+      <video class="about-video" id="about-video" src="/videos/about-blue-silk.mp4" muted loop
+        playsinline webkit-playsinline preload="none"></video>
       <div class="about-video-overlay" aria-hidden="true"></div>
     </div>
 
@@ -336,7 +340,7 @@
         <article class="founder-card" tabindex="0" aria-label="Chandrasekhar Vallabhaneni, Co-Founder">
           <div class="founder-portrait-frame">
             <img src="/images/leadership/chandrasekhar-vallabhaneni.jpg" alt="Chandrasekhar Vallabhaneni"
-              class="founder-image" loading="lazy">
+              class="founder-image" loading="lazy" decoding="async">
             <div class="founder-overlay" aria-hidden="true">
               <div class="founder-bio-content">
                 <p class="founder-education">B.Tech – Textile Technology</p>
@@ -356,7 +360,7 @@
         <article class="founder-card" tabindex="0" aria-label="Mohmad Noorulla, Co-Founder">
           <div class="founder-portrait-frame">
             <img src="/images/leadership/mohmad-noorulla.jpg" alt="Mohmad Noorulla"
-              class="founder-image" loading="lazy">
+              class="founder-image" loading="lazy" decoding="async">
             <div class="founder-overlay" aria-hidden="true">
               <div class="founder-bio-content">
                 <p class="founder-education">M.Tech – Textile Technology</p>
@@ -406,7 +410,7 @@
           <div class="tech-partners-image-wrapper">
             <img src="/images/technology-partners/dhanalakshmi-textile.jpg"
               alt="Shri Dhanalakshmi Group industrial textile machinery seamlessly transitioning into woven fabric texture"
-              class="tech-partners-image" loading="lazy">
+              class="tech-partners-image" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -435,7 +439,7 @@
           <figure class="gallery-item gallery-item-shirts" tabindex="0">
             <img src="https://images.squarespace-cdn.com/content/v1/56dbed1ae707eb815a773875/1527332242639-0YPYTX7JIA7RHLDQ00C1/The-World%27s-Finest-Bespoke-Shirting-Alumo-%26-Magnus-%26-Novus.jpg"
               onerror="this.src='/images/products/img2-shirts.jpg'"
-              alt="Bespoke Shirting" class="gallery-img" loading="lazy">
+              alt="Bespoke Shirting" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Shirts</span>
             </figcaption>
@@ -445,7 +449,7 @@
           <figure class="gallery-item gallery-item-bottoms" tabindex="0">
             <img src="https://dtcralphlauren.scene7.com/is/image/PoloGSI/s7-AI211A96723002_alternate10?$rl_4x5_pdp$"
               onerror="this.src='/images/products/img1-bottoms.jpg'"
-              alt="Tailored Bottoms" class="gallery-img" loading="lazy">
+              alt="Tailored Bottoms" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Bottoms</span>
             </figcaption>
@@ -455,7 +459,7 @@
           <figure class="gallery-item gallery-item-activewear" tabindex="0">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUjb4hBFSkE-WBwRjzS0vWIk0zER0tOtO2-wT-4Pt8A&s=10"
               onerror="this.src='/images/products/img3-activewear.jpg'"
-              alt="Activewear Jacket" class="gallery-img" loading="lazy">
+              alt="Activewear Jacket" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Activewear</span>
             </figcaption>
@@ -465,7 +469,7 @@
           <figure class="gallery-item gallery-item-greige" tabindex="0">
             <img src="https://novusapparelmanufacturer.com/images/backgrounds/bg-fabric-wall-bg.jpg"
               onerror="this.src='/images/products/img4-greige-fabrics.jpg'"
-              alt="Greige Fabric Rolls" class="gallery-img" loading="lazy">
+              alt="Greige Fabric Rolls" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Greige Fabrics</span>
             </figcaption>
@@ -475,7 +479,7 @@
           <figure class="gallery-item gallery-item-piece-dyed" tabindex="0">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp0Bz0przVCXWC-rGxl3KJ7TK8DeK6JHebDRp9J6Ep94aDQfkSKYFE5XoD&s=10"
               onerror="this.src='/images/products/img6-piece-dyed.jpg'"
-              alt="Piece-Dyed Fabric" class="gallery-img" loading="lazy">
+              alt="Piece-Dyed Fabric" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Piece-Dyed Fabrics</span>
             </figcaption>
@@ -485,7 +489,7 @@
           <figure class="gallery-item gallery-item-yarn-dyed" tabindex="0">
             <img src="https://novusapparels.com/img/factories/2.jpg"
               onerror="this.src='/images/products/img5-yarn-dyed.jpg'"
-              alt="Yarn Spinning &amp; Dyed Spools" class="gallery-img" loading="lazy">
+              alt="Yarn Spinning &amp; Dyed Spools" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Yarn-Dyed Fabrics</span>
             </figcaption>
@@ -495,7 +499,7 @@
           <figure class="gallery-item gallery-item-textures" tabindex="0">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4GZuiNKJtmfelZ8gK51aZVVB-e72pKiMTKmBNwmNv_Zf31RBaEBFDvZI&s=10"
               onerror="this.src='/images/products/img7-textures-finishes.jpg'"
-              alt="Fabric Textures &amp; Finishes" class="gallery-img" loading="lazy">
+              alt="Fabric Textures &amp; Finishes" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Fabric Textures &amp; Finishes</span>
             </figcaption>
@@ -508,7 +512,7 @@
           <figure class="gallery-item gallery-item-shirts" tabindex="-1">
             <img src="https://images.squarespace-cdn.com/content/v1/56dbed1ae707eb815a773875/1527332242639-0YPYTX7JIA7RHLDQ00C1/The-World%27s-Finest-Bespoke-Shirting-Alumo-%26-Magnus-%26-Novus.jpg"
               onerror="this.src='/images/products/img2-shirts.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Shirts</span>
             </figcaption>
@@ -518,7 +522,7 @@
           <figure class="gallery-item gallery-item-bottoms" tabindex="-1">
             <img src="https://dtcralphlauren.scene7.com/is/image/PoloGSI/s7-AI211A96723002_alternate10?$rl_4x5_pdp$"
               onerror="this.src='/images/products/img1-bottoms.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Bottoms</span>
             </figcaption>
@@ -528,7 +532,7 @@
           <figure class="gallery-item gallery-item-activewear" tabindex="-1">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUjb4hBFSkE-WBwRjzS0vWIk0zER0tOtO2-wT-4Pt8A&s=10"
               onerror="this.src='/images/products/img3-activewear.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Activewear</span>
             </figcaption>
@@ -538,7 +542,7 @@
           <figure class="gallery-item gallery-item-greige" tabindex="-1">
             <img src="https://novusapparelmanufacturer.com/images/backgrounds/bg-fabric-wall-bg.jpg"
               onerror="this.src='/images/products/img4-greige-fabrics.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Greige Fabrics</span>
             </figcaption>
@@ -548,7 +552,7 @@
           <figure class="gallery-item gallery-item-piece-dyed" tabindex="-1">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp0Bz0przVCXWC-rGxl3KJ7TK8DeK6JHebDRp9J6Ep94aDQfkSKYFE5XoD&s=10"
               onerror="this.src='/images/products/img6-piece-dyed.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Piece-Dyed Fabrics</span>
             </figcaption>
@@ -558,7 +562,7 @@
           <figure class="gallery-item gallery-item-yarn-dyed" tabindex="-1">
             <img src="https://novusapparels.com/img/factories/2.jpg"
               onerror="this.src='/images/products/img5-yarn-dyed.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Yarn-Dyed Fabrics</span>
             </figcaption>
@@ -568,7 +572,7 @@
           <figure class="gallery-item gallery-item-textures" tabindex="-1">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4GZuiNKJtmfelZ8gK51aZVVB-e72pKiMTKmBNwmNv_Zf31RBaEBFDvZI&s=10"
               onerror="this.src='/images/products/img7-textures-finishes.jpg'"
-              alt="" class="gallery-img" loading="lazy">
+              alt="" class="gallery-img" loading="lazy" decoding="async">
             <figcaption class="gallery-caption">
               <span class="gallery-category-name">Fabric Textures &amp; Finishes</span>
             </figcaption>
@@ -636,187 +640,187 @@
         <!-- Set 1: Full Original Factory Photographs -->
         <div class="factories-gallery-group">
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/1.jpg" alt="Ring Spinning Frames" class="factory-img" loading="lazy">
+            <img src="/images/factories/1.jpg" alt="Ring Spinning Frames" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Ring Spinning Frames</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/2.jpg" alt="Yarn Spindles & Bobbins" class="factory-img" loading="lazy">
+            <img src="/images/factories/2.jpg" alt="Yarn Spindles & Bobbins" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Yarn Spindles & Bobbins</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/3.jpg" alt="Carding & Sliver Drawing" class="factory-img" loading="lazy">
+            <img src="/images/factories/3.jpg" alt="Carding & Sliver Drawing" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Carding & Sliver Drawing</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/4.jpg" alt="Fiber Blowroom & Carding" class="factory-img" loading="lazy">
+            <img src="/images/factories/4.jpg" alt="Fiber Blowroom & Carding" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fiber Blowroom & Carding</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/5.jpg" alt="Apparel Quality Assurance" class="factory-img" loading="lazy">
+            <img src="/images/factories/5.jpg" alt="Apparel Quality Assurance" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Quality Assurance</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/6.jpg" alt="Drawing Frames & Sliver Cans" class="factory-img" loading="lazy">
+            <img src="/images/factories/6.jpg" alt="Drawing Frames & Sliver Cans" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Drawing Frames & Sliver Cans</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/7.jpg" alt="Automated Bale Plucker" class="factory-img" loading="lazy">
+            <img src="/images/factories/7.jpg" alt="Automated Bale Plucker" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Automated Bale Plucker</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/8.jpg" alt="Combing & Sliver Preparation" class="factory-img" loading="lazy">
+            <img src="/images/factories/8.jpg" alt="Combing & Sliver Preparation" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Combing & Sliver Preparation</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/9.jpg" alt="Ring Spinning Unit" class="factory-img" loading="lazy">
+            <img src="/images/factories/9.jpg" alt="Ring Spinning Unit" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Ring Spinning Unit</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/10.jpg" alt="Garment Manufacturing Floor" class="factory-img" loading="lazy">
+            <img src="/images/factories/10.jpg" alt="Garment Manufacturing Floor" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Garment Manufacturing Floor</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/11.jpg" alt="High-Speed Weaving Looms" class="factory-img" loading="lazy">
+            <img src="/images/factories/11.jpg" alt="High-Speed Weaving Looms" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">High-Speed Weaving Looms</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/12.jpg" alt="Apparel Sewing Line" class="factory-img" loading="lazy">
+            <img src="/images/factories/12.jpg" alt="Apparel Sewing Line" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Sewing Line</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/13.jpg" alt="Fabric Quality Inspection" class="factory-img" loading="lazy">
+            <img src="/images/factories/13.jpg" alt="Fabric Quality Inspection" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fabric Quality Inspection</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/14.jpg" alt="Garment Assembly Workstations" class="factory-img" loading="lazy">
+            <img src="/images/factories/14.jpg" alt="Garment Assembly Workstations" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Garment Assembly Workstations</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/15.jpg" alt="Textile Processing Range" class="factory-img" loading="lazy">
+            <img src="/images/factories/15.jpg" alt="Textile Processing Range" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Textile Processing Range</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/16.jpg" alt="High-Speed Warping Creel" class="factory-img" loading="lazy">
+            <img src="/images/factories/16.jpg" alt="High-Speed Warping Creel" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">High-Speed Warping Creel</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/17.jpg" alt="Apparel Sewing & Pressing Line" class="factory-img" loading="lazy">
+            <img src="/images/factories/17.jpg" alt="Apparel Sewing & Pressing Line" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Sewing & Pressing Line</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/18.jpg" alt="Finished Garment Sorting" class="factory-img" loading="lazy">
+            <img src="/images/factories/18.jpg" alt="Finished Garment Sorting" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Finished Garment Sorting</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/19.jpg" alt="Circular Knitting Machinery" class="factory-img" loading="lazy">
+            <img src="/images/factories/19.jpg" alt="Circular Knitting Machinery" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Circular Knitting Machinery</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/20.jpg" alt="Warp Beam Sizing" class="factory-img" loading="lazy">
+            <img src="/images/factories/20.jpg" alt="Warp Beam Sizing" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Warp Beam Sizing</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/21.jpg" alt="Apparel Assembly Hall" class="factory-img" loading="lazy">
+            <img src="/images/factories/21.jpg" alt="Apparel Assembly Hall" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Assembly Hall</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/22.jpg" alt="Continuous Finishing Range" class="factory-img" loading="lazy">
+            <img src="/images/factories/22.jpg" alt="Continuous Finishing Range" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Continuous Finishing Range</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/23.jpg" alt="Fabric Finishing Range" class="factory-img" loading="lazy">
+            <img src="/images/factories/23.jpg" alt="Fabric Finishing Range" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fabric Finishing Range</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/24.jpg" alt="Fabric Washing & Finishing" class="factory-img" loading="lazy">
+            <img src="/images/factories/24.jpg" alt="Fabric Washing & Finishing" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fabric Washing & Finishing</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/25.jpg" alt="Warp Sizing Unit" class="factory-img" loading="lazy">
+            <img src="/images/factories/25.jpg" alt="Warp Sizing Unit" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Warp Sizing Unit</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/26.jpg" alt="Warping & Preparation Floor" class="factory-img" loading="lazy">
+            <img src="/images/factories/26.jpg" alt="Warping & Preparation Floor" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Warping & Preparation Floor</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/27.jpg" alt="Yarn Dyeing & Vessels" class="factory-img" loading="lazy">
+            <img src="/images/factories/27.jpg" alt="Yarn Dyeing & Vessels" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Yarn Dyeing & Vessels</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/28.jpg" alt="Multi-Color Bobbin Creel" class="factory-img" loading="lazy">
+            <img src="/images/factories/28.jpg" alt="Multi-Color Bobbin Creel" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Multi-Color Bobbin Creel</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/29.jpg" alt="Yarn Winding & Twisting" class="factory-img" loading="lazy">
+            <img src="/images/factories/29.jpg" alt="Yarn Winding & Twisting" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Yarn Winding & Twisting</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/30.jpg" alt="Automated Weaving Loom" class="factory-img" loading="lazy">
+            <img src="/images/factories/30.jpg" alt="Automated Weaving Loom" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Automated Weaving Loom</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="0">
-            <img src="/images/factories/31.jpg" alt="Logistics & Dispatch" class="factory-img" loading="lazy">
+            <img src="/images/factories/31.jpg" alt="Logistics & Dispatch" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Logistics & Dispatch</span>
             </figcaption>
@@ -826,187 +830,187 @@
         <!-- Set 2: Duplicate Set for Seamless Infinite Loop -->
         <div class="factories-gallery-group" aria-hidden="true">
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/1.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/1.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Ring Spinning Frames</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/2.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/2.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Yarn Spindles & Bobbins</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/3.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/3.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Carding & Sliver Drawing</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/4.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/4.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fiber Blowroom & Carding</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/5.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/5.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Quality Assurance</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/6.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/6.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Drawing Frames & Sliver Cans</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/7.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/7.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Automated Bale Plucker</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/8.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/8.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Combing & Sliver Preparation</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/9.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/9.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Ring Spinning Unit</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/10.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/10.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Garment Manufacturing Floor</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/11.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/11.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">High-Speed Weaving Looms</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/12.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/12.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Sewing Line</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/13.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/13.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fabric Quality Inspection</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/14.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/14.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Garment Assembly Workstations</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/15.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/15.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Textile Processing Range</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/16.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/16.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">High-Speed Warping Creel</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/17.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/17.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Sewing & Pressing Line</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/18.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/18.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Finished Garment Sorting</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/19.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/19.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Circular Knitting Machinery</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/20.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/20.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Warp Beam Sizing</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/21.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/21.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Apparel Assembly Hall</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/22.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/22.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Continuous Finishing Range</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/23.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/23.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fabric Finishing Range</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/24.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/24.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Fabric Washing & Finishing</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/25.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/25.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Warp Sizing Unit</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/26.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/26.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Warping & Preparation Floor</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/27.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/27.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Yarn Dyeing & Vessels</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/28.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/28.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Multi-Color Bobbin Creel</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/29.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/29.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Yarn Winding & Twisting</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/30.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/30.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Automated Weaving Loom</span>
             </figcaption>
           </figure>
           <figure class="factory-item" tabindex="-1">
-            <img src="/images/factories/31.jpg" alt="" class="factory-img" loading="lazy">
+            <img src="/images/factories/31.jpg" alt="" class="factory-img" loading="lazy" decoding="async">
             <figcaption class="factory-caption">
               <span class="factory-category-name">Logistics & Dispatch</span>
             </figcaption>
