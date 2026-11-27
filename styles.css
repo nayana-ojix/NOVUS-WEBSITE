@@ -15,15 +15,15 @@
   --color-dark-surface: #111318;
   --color-light-bg: #ffffff;
   --color-light-translucent: rgba(255, 255, 255, 0.94);
-  
+
   --color-stitch-white: #ffffff;
   --color-stitch-silver: #e2e8f0;
   --color-stitch-dark: #121316;
-  
+
   --color-text-dark: #121316;
   --color-text-muted: #64748b;
   --color-text-light: #ffffff;
-  
+
   --color-border-light: rgba(0, 0, 0, 0.07);
   --color-border-dark: rgba(255, 255, 255, 0.12);
 
@@ -33,7 +33,9 @@
   --globe-nav-size: 28px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -71,9 +73,9 @@ body {
   background-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0);
   transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: background-color, border-color, box-shadow;
 }
 
@@ -127,8 +129,8 @@ body {
   display: inline-block;
   opacity: 0;
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.4s ease;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.4s ease;
   will-change: opacity, transform, color;
 }
 
@@ -166,8 +168,8 @@ body {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
-              color 0.4s ease;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+    color 0.4s ease;
   will-change: opacity, transform, color;
 }
 
@@ -209,7 +211,7 @@ body {
   position: relative;
   z-index: 1020;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.3s ease;
+    opacity 0.3s ease;
   user-select: none;
 }
 
@@ -219,7 +221,8 @@ body {
 
 .thread-trigger-label {
   font-family: var(--font-sans);
-  font-size: 0.72rem; /* 11.5px */
+  font-size: 0.72rem;
+  /* 11.5px */
   font-weight: 400;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -252,8 +255,13 @@ body {
 }
 
 @keyframes trigger-stitch-glide {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: 15; }
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 15;
+  }
 }
 
 /* Thread Knots with Eyelet Rings */
@@ -300,6 +308,21 @@ body {
    3. Seven navigation links
    Quiet luxury, uncluttered editorial typography inspired by Ashford & Lane.
    ========================================================================== */
+body.menu-open .navbar {
+  z-index: 3000;
+}
+
+/* Hide central animated globe, ambient glow, and scroll cues when navbar is open */
+body.menu-open .animated-globe-wrapper,
+body.menu-open .ambient-glow,
+body.menu-open .scroll-cue,
+body.menu-open .hero-video-container {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
 .thread-overlay {
   position: fixed;
   inset: 0;
@@ -317,7 +340,7 @@ body {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.45s;
+    visibility 0.45s;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -339,7 +362,7 @@ body {
   opacity: 0;
   transform: translateY(-8px);
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
 }
 
 .thread-overlay.is-open .thread-overlay-bar {
@@ -476,16 +499,36 @@ body {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.thread-overlay.is-open .thread-nav-item:nth-child(1) { transition-delay: 0.08s; }
-.thread-overlay.is-open .thread-nav-item:nth-child(2) { transition-delay: 0.13s; }
-.thread-overlay.is-open .thread-nav-item:nth-child(3) { transition-delay: 0.18s; }
-.thread-overlay.is-open .thread-nav-item:nth-child(4) { transition-delay: 0.23s; }
-.thread-overlay.is-open .thread-nav-item:nth-child(5) { transition-delay: 0.28s; }
-.thread-overlay.is-open .thread-nav-item:nth-child(6) { transition-delay: 0.33s; }
-.thread-overlay.is-open .thread-nav-item:nth-child(7) { transition-delay: 0.38s; }
+.thread-overlay.is-open .thread-nav-item:nth-child(1) {
+  transition-delay: 0.08s;
+}
+
+.thread-overlay.is-open .thread-nav-item:nth-child(2) {
+  transition-delay: 0.13s;
+}
+
+.thread-overlay.is-open .thread-nav-item:nth-child(3) {
+  transition-delay: 0.18s;
+}
+
+.thread-overlay.is-open .thread-nav-item:nth-child(4) {
+  transition-delay: 0.23s;
+}
+
+.thread-overlay.is-open .thread-nav-item:nth-child(5) {
+  transition-delay: 0.28s;
+}
+
+.thread-overlay.is-open .thread-nav-item:nth-child(6) {
+  transition-delay: 0.33s;
+}
+
+.thread-overlay.is-open .thread-nav-item:nth-child(7) {
+  transition-delay: 0.38s;
+}
 
 .thread-overlay.is-open .thread-nav-item {
   opacity: 1;
@@ -505,9 +548,9 @@ body {
   padding: 0.25rem 0.5rem;
   position: relative;
   transition: color 0.35s ease,
-              letter-spacing 0.35s ease,
-              transform 0.35s ease,
-              opacity 0.35s ease;
+    letter-spacing 0.35s ease,
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
 /* Sibling dimming for quiet luxury focus */
@@ -552,7 +595,8 @@ body {
 .scroll-stage-container {
   position: relative;
   width: 100%;
-  min-height: 220vh; /* Smooth scroll track strictly for the animation */
+  min-height: 220vh;
+  /* Smooth scroll track strictly for the animation */
   background-color: var(--color-dark-bg);
 }
 
@@ -567,6 +611,69 @@ body {
   justify-content: center;
   pointer-events: none;
   z-index: 10;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   CONTINUOUS HERO BACKGROUND VIDEOS (TEXTILE ENGINEERING & MANUFACTURING)
+   Seamless crossfade loop: Video 01 -> 1000ms Crossfade -> Video 02 -> Repeat
+   ========================================================================== */
+.hero-video-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  background-color: var(--color-dark-bg);
+  transition: opacity 0.5s ease;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.0s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 1.0s;
+  will-change: opacity;
+  pointer-events: none;
+  background-color: var(--color-dark-bg);
+}
+
+.hero-video.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero-video.is-incoming {
+  opacity: 1;
+  visibility: visible;
+  z-index: 3;
+}
+
+.hero-video.is-outgoing {
+  opacity: 0;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Dark Industrial Textile Engineering Atmosphere Overlay */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  background: radial-gradient(circle at center, rgba(9, 10, 13, 0.42) 0%, rgba(9, 10, 13, 0.72) 70%, rgba(9, 10, 13, 0.94) 100%),
+    linear-gradient(180deg, rgba(9, 10, 13, 0.75) 0%, rgba(9, 10, 13, 0.32) 40%, rgba(9, 10, 13, 0.85) 100%);
+  pointer-events: none;
 }
 
 /* Ethereal Ambient Radial Glow behind Stitch Globe */
@@ -579,13 +686,21 @@ body {
   filter: blur(28px);
   pointer-events: none;
   opacity: 1;
+  z-index: 5;
   transition: opacity 0.4s ease;
   animation: ambient-pulse 6s ease-in-out infinite alternate;
 }
 
 @keyframes ambient-pulse {
-  0% { transform: scale(0.94); opacity: 0.8; }
-  100% { transform: scale(1.06); opacity: 1; }
+  0% {
+    transform: scale(0.94);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
 }
 
 /* Scroll Invitation Cue */
@@ -599,6 +714,7 @@ body {
   align-items: center;
   gap: 0.8rem;
   opacity: 0.85;
+  z-index: 6;
   transition: opacity 0.3s ease;
 }
 
@@ -618,10 +734,25 @@ body {
 }
 
 @keyframes scroll-line-drop {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  50.1% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  50.1% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
 }
 
 /* ==========================================================================
@@ -662,9 +793,11 @@ body {
   0% {
     transform: rotate(-18deg) scale(1);
   }
+
   50% {
     transform: rotate(-13deg) scale(1.018);
   }
+
   100% {
     transform: rotate(-22deg) scale(0.985);
   }
@@ -685,8 +818,10 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
-    stroke-dashoffset: 65; /* Multiple of (4 + 2.5 = 6.5) for seamless loop */
+    stroke-dashoffset: 65;
+    /* Multiple of (4 + 2.5 = 6.5) for seamless loop */
   }
 }
 
@@ -715,6 +850,7 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
     stroke-dashoffset: 60;
   }
@@ -745,6 +881,7 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
     stroke-dashoffset: -50;
   }
@@ -761,6 +898,7 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
     stroke-dashoffset: 48;
   }
@@ -778,6 +916,7 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
     stroke-dashoffset: 60;
   }
@@ -803,10 +942,12 @@ body {
     opacity: 0.7;
     stroke-width: 1.2;
   }
+
   50% {
     opacity: 1;
     stroke-width: 1.7;
   }
+
   100% {
     opacity: 0.7;
     stroke-width: 1.2;
@@ -830,7 +971,8 @@ body {
 .animated-globe-wrapper.globe-in-navbar .stitch-weft,
 .animated-globe-wrapper.globe-in-navbar .stitch-wave-weft,
 .animated-globe-wrapper.globe-in-navbar .thread-continuous-master {
-  animation-duration: 28s; /* Slower, whisper-quiet micro-movement in navbar */
+  animation-duration: 28s;
+  /* Slower, whisper-quiet micro-movement in navbar */
 }
 
 /* Scroll track spacer strictly for driving the scroll timeline */
@@ -860,7 +1002,8 @@ body {
   }
 
   .thread-trigger-label {
-    display: none; /* Shows purely the iconic three-knot stitched line on mobile */
+    display: none;
+    /* Shows purely the iconic three-knot stitched line on mobile */
   }
 
   .thread-trigger-svg {
