@@ -25,7 +25,8 @@
 
   // Animation & Interpolation Configuration
   let scrollThreshold = Math.min(window.innerHeight * 0.7, 500); // Distance over which transition completes
-  let heroSize = 190; // Default base size matching CSS --globe-hero-size
+  let heroWidth = 180; // Base width matching CSS --globe-hero-width
+  let heroHeight = 192.41; // Base height matching CSS --globe-hero-height
   let ticking = false;
 
   // Easing function for bespoke editorial grace (easeInOutCubic)
@@ -38,10 +39,11 @@
     // Current slot position in fixed coordinates
     const slotRect = oSlot.getBoundingClientRect();
 
-    // Read hero size from computed style
-    heroSize = parseFloat(getComputedStyle(animatedGlobe).width) || 190;
-    const targetSize = slotRect.width > 0 ? slotRect.width : 28;
-    const targetScale = targetSize / heroSize;
+    // Read hero dimensions from computed style
+    heroWidth = parseFloat(getComputedStyle(animatedGlobe).width) || 180;
+    heroHeight = parseFloat(getComputedStyle(animatedGlobe).height) || 192.41;
+    const targetSize = slotRect.width > 0 ? slotRect.width : 29.85;
+    const targetScale = targetSize / heroWidth;
 
     // Viewport Center
     const startX = window.innerWidth / 2;
@@ -77,8 +79,8 @@
 
     // Apply hardware-accelerated 3D transform
     // Note: animatedGlobe is positioned at top:0, left:0, so we translate its center
-    const translateX = currentCenterX - heroSize / 2;
-    const translateY = currentCenterY - heroSize / 2;
+    const translateX = currentCenterX - heroWidth / 2;
+    const translateY = currentCenterY - heroHeight / 2;
 
     animatedGlobe.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${currentScale})`;
 

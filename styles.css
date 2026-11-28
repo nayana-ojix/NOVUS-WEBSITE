@@ -29,8 +29,8 @@
 
   /* Dimensions */
   --navbar-height: 80px;
-  --globe-hero-size: 190px;
-  --globe-nav-size: 28px;
+  --globe-hero-width: 180px;
+  --globe-hero-height: 192.41px;
 }
 
 *,
@@ -99,98 +99,83 @@ body {
 }
 
 /* ==========================================================================
-   BRAND LOGO (N [GLOBE] VUS APPAREL)
+   OFFICIAL BRAND LOGO (N [GLOBE] VUS APPAREL LIMITED)
    ========================================================================== */
 .brand-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: block;
   text-decoration: none;
-  color: inherit;
   z-index: 1020;
   user-select: none;
   cursor: pointer;
-}
-
-.logo-mark {
-  display: flex;
-  align-items: center;
   position: relative;
-  line-height: 1;
+  width: 140px;
+  height: 44.88px;
+  transition: opacity 0.3s ease;
 }
 
-/* Typography matching Ashford Lane atelier aesthetic */
-.logo-letter {
-  font-family: var(--font-serif);
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: var(--color-text-light);
-  display: inline-block;
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    color 0.4s ease;
-  will-change: opacity, transform, color;
+.brand-logo:hover {
+  opacity: 0.88;
 }
 
-.logo-letter-n {
-  transform: translateX(-14px);
+.logo-composite-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.logo-letter-vus {
-  transform: translateX(14px);
-  margin-left: 1px;
-}
-
-/* The slot where the Stitch Globe locks into */
+/* Docking target slot for the Globe 'O' (calculated from 680x218 master logo) */
 .logo-o-slot {
-  width: var(--globe-nav-size);
-  height: var(--globe-nav-size);
-  margin: 0 1px;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  position: absolute;
+  left: 21.3235%; /* 145 / 680 */
+  top: 2.2936%;  /* 5 / 218 */
+  width: 21.3235%; /* 145 / 680 */
+  height: 71.1009%; /* 155 / 218 */
+  pointer-events: none;
+  opacity: 0;
 }
 
-/* Subtitle APPAREL */
-.logo-tagline {
-  font-family: var(--font-sans);
-  font-size: 8.5px;
-  font-weight: 400;
-  letter-spacing: 0.42em;
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: uppercase;
-  margin-top: 3px;
-  padding-left: 2px;
+/* Official Logo Layers: N, VUS, APPAREL LIMITED */
+.logo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.logo-layer-n {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateX(-14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-layer-vus {
+  opacity: 0;
+  transform: translateX(14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-layer-apparel {
+  opacity: 0;
+  transform: translateY(8px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
-    color 0.4s ease;
-  will-change: opacity, transform, color;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
 }
 
 /* Revealed Logo State (after scroll) */
-.brand-logo.logo-revealed .logo-letter {
+.brand-logo.logo-revealed .logo-layer-n,
+.brand-logo.logo-revealed .logo-layer-vus {
   opacity: 1;
   transform: translateX(0);
 }
 
-.brand-logo.logo-revealed .logo-tagline {
+.brand-logo.logo-revealed .logo-layer-apparel {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Scrolled logo state (Preserves white typography) */
-.navbar.navbar-scrolled .brand-logo .logo-letter {
-  color: var(--color-text-light);
-}
-
-.navbar.navbar-scrolled .brand-logo .logo-tagline {
-  color: rgba(255, 255, 255, 0.65);
 }
 
 /* ==========================================================================
@@ -371,11 +356,10 @@ body.menu-open .hero-statement-container {
   transform: translateY(0);
 }
 
-/* 1. NOVUS Stitch Globe Logo inside Overlay */
+/* 1. Official NOVUS Logo inside Overlay */
 .overlay-brand-logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   text-decoration: none;
   color: inherit;
   user-select: none;
@@ -387,48 +371,10 @@ body.menu-open .hero-statement-container {
   opacity: 0.85;
 }
 
-.overlay-brand-logo .logo-mark {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.overlay-brand-logo .logo-letter {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: #ffffff;
-  opacity: 1;
-  transform: none;
-}
-
-.overlay-logo-globe {
-  width: 26px;
-  height: 26px;
-  margin: 0 1px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.overlay-logo-globe .stitch-globe-svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
-}
-
-.overlay-brand-logo .logo-tagline {
-  font-family: var(--font-sans);
-  font-size: 8px;
-  font-weight: 400;
-  letter-spacing: 0.42em;
-  color: rgba(255, 255, 255, 0.65);
-  text-transform: uppercase;
-  margin-top: 3px;
-  padding-left: 2px;
-  opacity: 1;
-  transform: none;
+.overlay-logo-img {
+  width: 145px;
+  height: auto;
+  display: block;
 }
 
 /* 2. Refined Close Button */
@@ -805,30 +751,47 @@ body.menu-open .hero-statement-container {
 }
 
 /* ==========================================================================
-   ANIMATED STITCH GLOBE ELEMENT
-   Starts centered, illuminated white/silver, morphs to navbar 'O'
+   ANIMATED OFFICIAL GLOBE ELEMENT
+   Starts centered, illuminated silver-blue, morphs to navbar 'O'
    ========================================================================== */
 .animated-globe-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--globe-hero-size);
-  height: var(--globe-hero-size);
+  width: var(--globe-hero-width);
+  height: var(--globe-hero-height);
   z-index: 1030;
   pointer-events: none;
   transform-origin: center center;
   will-change: transform, opacity;
-  transform: translate3d(calc(50vw - var(--globe-hero-size) / 2), calc(50vh - var(--globe-hero-size) / 2), 0);
+  transform: translate3d(calc(50vw - var(--globe-hero-width) / 2), calc(50vh - var(--globe-hero-height) / 2), 0);
 }
 
-.stitch-globe-svg {
+.novus-official-globe {
   width: 100%;
   height: 100%;
+  object-fit: contain;
   display: block;
-  overflow: visible;
-  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45));
+  filter: drop-shadow(0 0 35px rgba(160, 200, 225, 0.35));
+  animation: globe-hero-presence 5s ease-in-out infinite;
   transition: filter 0.4s ease;
-  will-change: filter;
+}
+
+@keyframes globe-hero-presence {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 30px rgba(160, 200, 225, 0.3));
+  }
+  50% {
+    transform: translateY(-6px) scale(1.02);
+    filter: drop-shadow(0 0 45px rgba(180, 220, 245, 0.42));
+  }
+}
+
+/* Docked State in Navbar */
+.animated-globe-wrapper.globe-in-navbar .novus-official-globe {
+  filter: none;
+  animation: none;
 }
 
 /* Tailoring Thread & Stitches Styling */
@@ -2572,12 +2535,17 @@ body.menu-open .hero-statement-container {
 @media (max-width: 768px) {
   :root {
     --navbar-height: 72px;
-    --globe-hero-size: 150px;
-    --globe-nav-size: 25px;
+    --globe-hero-width: 140px;
+    --globe-hero-height: 149.65px;
   }
 
   .navbar-container {
     padding: 0 1.5rem;
+  }
+
+  .brand-logo {
+    width: 120px;
+    height: 38.47px;
   }
 
   .thread-trigger-label {
@@ -2601,25 +2569,22 @@ body.menu-open .hero-statement-container {
     font-size: clamp(1.45rem, 5.2vw, 1.95rem);
     letter-spacing: 0.06em;
   }
-
-  .logo-letter {
-    font-size: 24px;
-  }
-
-  .logo-tagline {
-    font-size: 7.5px;
-  }
 }
 
 @media (max-width: 480px) {
   :root {
     --navbar-height: 66px;
-    --globe-hero-size: 130px;
-    --globe-nav-size: 23px;
+    --globe-hero-width: 120px;
+    --globe-hero-height: 128.27px;
   }
 
   .navbar-container {
     padding: 0 1.15rem;
+  }
+
+  .brand-logo {
+    width: 106px;
+    height: 33.98px;
   }
 
   .thread-overlay {
@@ -2632,10 +2597,5 @@ body.menu-open .hero-statement-container {
 
   .thread-nav-link {
     font-size: 1.55rem;
-  }
-
-  .logo-letter {
-    font-size: 22px;
-    letter-spacing: 0.12em;
   }
 }
