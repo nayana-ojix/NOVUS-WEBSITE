@@ -13,7 +13,7 @@
   const animatedGlobe = document.getElementById('animated-globe-wrapper');
   const ambientGlow = document.getElementById('ambient-glow');
   const scrollCue = document.getElementById('scroll-cue');
-  const videoContainer = document.getElementById('hero-video-container');
+  const heroImageContainer = document.getElementById('hero-image-container');
   const heroStatement = document.getElementById('hero-statement-container');
 
   // The Thread Menu Elements
@@ -203,129 +203,7 @@
     document.body.style.overflow = '';
   }
 
-  // ==========================================================================
-  // CONTINUOUS HERO VIDEO ENGINE (TEXTILE ENGINEERING & INDUSTRIAL PROCESS)
-  // Seamless Crossfade: Video 01 -> 1000ms Crossfade -> Video 02 -> Repeat
-  // ==========================================================================
-  function setupHeroVideoCrossfade() {
-    const v1 = document.getElementById('hero-video-1');
-    const v2 = document.getElementById('hero-video-2');
-    if (!v1 || !v2) return;
 
-    // Crossfade duration: 1000ms
-    const FADE_DURATION = 1.0;
-    let isCrossfading = false;
-
-    v1.muted = true;
-    v2.muted = true;
-    v1.playsInline = true;
-    v2.playsInline = true;
-
-    let activeVideo = v1;
-    let queuedVideo = v2;
-
-    function playSafely(video) {
-      const p = video.play();
-      if (p !== undefined) {
-        p.catch(() => {
-          // If browser policy delays unprompted autoplay, play on first interaction
-          const unlock = () => {
-            if (activeVideo) activeVideo.play().catch(() => { });
-            window.removeEventListener('click', unlock);
-            window.removeEventListener('touchstart', unlock);
-            window.removeEventListener('scroll', unlock);
-          };
-          window.addEventListener('click', unlock, { once: true });
-          window.addEventListener('touchstart', unlock, { once: true });
-          window.addEventListener('scroll', unlock, { once: true });
-        });
-      }
-    }
-
-    function triggerCrossfade() {
-      if (isCrossfading) return;
-      isCrossfading = true;
-
-      // Start queued video at beginning and play before fade starts to guarantee zero black frames
-      queuedVideo.currentTime = 0;
-      queuedVideo.classList.remove('is-active', 'is-outgoing');
-      queuedVideo.classList.add('is-incoming');
-
-      const playPromise = queuedVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => { });
-      }
-
-      // Fade out active video
-      activeVideo.classList.remove('is-active', 'is-incoming');
-      activeVideo.classList.add('is-outgoing');
-
-      // After 1000ms crossfade duration
-      setTimeout(() => {
-        // Queued video is now active
-        queuedVideo.classList.remove('is-incoming');
-        queuedVideo.classList.add('is-active');
-
-        // Reset and pause previous video
-        activeVideo.classList.remove('is-outgoing');
-        activeVideo.pause();
-        activeVideo.currentTime = 0;
-
-        // Swap references
-        const temp = activeVideo;
-        activeVideo = queuedVideo;
-        queuedVideo = temp;
-
-        isCrossfading = false;
-      }, FADE_DURATION * 1000);
-    }
-
-    function onTimeUpdate(e) {
-      const vid = e.target;
-      if (vid !== activeVideo || isCrossfading) return;
-
-      // Trigger crossfade when active video is 1.0s away from completion
-      if (vid.duration && vid.currentTime >= vid.duration - FADE_DURATION) {
-        triggerCrossfade();
-      }
-    }
-
-    v1.addEventListener('timeupdate', onTimeUpdate);
-    v2.addEventListener('timeupdate', onTimeUpdate);
-
-    // Backup safety event in case of duration seek
-    v1.addEventListener('ended', () => {
-      if (activeVideo === v1 && !isCrossfading) triggerCrossfade();
-    });
-    v2.addEventListener('ended', () => {
-      if (activeVideo === v2 && !isCrossfading) triggerCrossfade();
-    });
-
-    // Start Video 01
-    playSafely(v1);
-
-    // Defer Video 02 loading: start preloading Video 02 only after Video 01 is playing smoothly (saves 12.7 MB on initial load)
-    setTimeout(() => {
-      if (v2) {
-        v2.preload = 'auto';
-        v2.load();
-      }
-    }, 2000);
-
-    // Keep active video playing on window focus
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden && activeVideo) {
-        activeVideo.play().catch(() => { });
-      }
-    });
-
-    // Watchdog: guarantee continuous playback never stalls
-    setInterval(() => {
-      if (activeVideo && activeVideo.paused && !document.hidden) {
-        activeVideo.play().catch(() => { });
-      }
-    }, 1500);
-  }
 
   // ==========================================================================
   // ABOUT US SECTION CONTROLLER (STAGGERED ENTRANCE & HEADLINE TABS)
@@ -652,7 +530,6 @@
     }
 
     try { setupThreadMenu(); } catch (e) { console.error(e); }
-    try { setupHeroVideoCrossfade(); } catch (e) { console.error(e); }
     try { setupAboutSection(); } catch (e) { console.error(e); }
     try { setupLeadershipSection(); } catch (e) { console.error(e); }
     try { setupTechPartnersSection(); } catch (e) { console.error(e); }
