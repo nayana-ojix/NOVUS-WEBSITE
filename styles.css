@@ -304,11 +304,11 @@ body.menu-open .navbar {
   transform: translateX(0);
 }
 
-/* Top Bar: Logo on Left, Close Button on Right */
+/* Top Bar: Close Button on Right */
 .thread-overlay-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
   opacity: 0;
   transform: translateY(-8px);
