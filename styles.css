@@ -2075,12 +2075,35 @@ body.menu-open .navbar {
   position: relative;
   z-index: 20;
   width: 100%;
-  padding: 8.5rem 0 3.5rem 0;
-  background-color: #ffffff;
+  padding: 8.5rem 0 0 0;
+  background-color: #f7f9fb;
   overflow: hidden;
 }
 
+/* Background Image Layer: Map Grid Vector */
+.contact-bg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contact-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
 .contact-container {
+  position: relative;
+  z-index: 2;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 4rem;
@@ -2484,8 +2507,12 @@ body.menu-open .navbar {
 
 /* Minimal Site Footer */
 .novus-footer {
+  position: relative;
+  z-index: 2;
   border-top: 1px solid rgba(0, 0, 0, 0.07);
-  background-color: #fafbfc;
+  background-color: rgba(250, 251, 252, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 3.5rem 0;
   margin-top: 5rem;
 }
