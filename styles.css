@@ -127,10 +127,14 @@ body {
 /* Docking target slot for the Globe 'O' (calculated from 680x218 master logo) */
 .logo-o-slot {
   position: absolute;
-  left: 21.3235%; /* 145 / 680 */
-  top: 2.2936%;  /* 5 / 218 */
-  width: 21.3235%; /* 145 / 680 */
-  height: 71.1009%; /* 155 / 218 */
+  left: 21.3235%;
+  /* 145 / 680 */
+  top: 2.2936%;
+  /* 5 / 218 */
+  width: 21.3235%;
+  /* 145 / 680 */
+  height: 71.1009%;
+  /* 155 / 218 */
   pointer-events: none;
   opacity: 0;
 }
@@ -207,10 +211,9 @@ body {
 
 .thread-trigger-label {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  /* 11.5px */
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.85);
   transition: color 0.3s ease, letter-spacing 0.3s ease;
@@ -399,9 +402,9 @@ body.menu-open .hero-statement-container {
 
 .close-btn-text {
   font-family: var(--font-sans);
-  font-size: 0.70rem;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
@@ -486,7 +489,7 @@ body.menu-open .hero-statement-container {
 /* The Navigation Link */
 .thread-nav-link {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 3.1vw, 2.45rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1.15;
@@ -639,8 +642,8 @@ body.menu-open .hero-statement-container {
 
 .scroll-cue-text {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.34em;
+  font-size: 13px;
+  letter-spacing: 0.28em;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
 }
@@ -674,7 +677,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   visibility: hidden;
   transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 1.0s;
+    visibility 1.0s;
   will-change: opacity;
 }
 
@@ -685,9 +688,10 @@ body.menu-open .hero-statement-container {
 
 .hero-statement {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 2.7vw, 2.5rem);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 400;
-  color: #F1EDE5; /* Warm Ivory */
+  color: #F1EDE5;
+  /* Warm Ivory */
   letter-spacing: clamp(0.12em, 0.35vw, 0.2em);
   line-height: 1.55;
   text-transform: uppercase;
@@ -750,10 +754,13 @@ body.menu-open .hero-statement-container {
 }
 
 @keyframes globe-hero-presence {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) scale(1);
     filter: drop-shadow(0 0 30px rgba(160, 200, 225, 0.3));
   }
+
   50% {
     transform: translateY(-6px) scale(1.02);
     filter: drop-shadow(0 0 45px rgba(180, 220, 245, 0.42));
@@ -1009,8 +1016,10 @@ body.menu-open .hero-statement-container {
 
 .about-bg-image {
   filter: blur(7px) saturate(0.35);
-  opacity: 0.95; /* Reducing visual intensity by 5% */
-  transform: scale(1.04); /* Prevents blur edge bleed */
+  opacity: 0.95;
+  /* Reducing visual intensity by 5% */
+  transform: scale(1.04);
+  /* Prevents blur edge bleed */
   will-change: filter, transform;
 }
 
@@ -1046,14 +1055,14 @@ body.menu-open .hero-statement-container {
   cursor: pointer;
   text-align: left;
   font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 3.4vw, 3.25rem);
+  font-size: clamp(1.35rem, 1.8vw, 1.625rem);
   font-weight: 400;
-  line-height: 1.22;
+  line-height: 1.25;
   letter-spacing: 0.015em;
   color: rgba(18, 19, 22, 0.45);
   transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
   transform: translateY(22px);
   will-change: opacity, transform, color;
@@ -1104,8 +1113,8 @@ body.menu-open .hero-statement-container {
   visibility: hidden;
   transform: translateY(12px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.5s;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.5s;
   pointer-events: none;
 }
 
@@ -1119,10 +1128,10 @@ body.menu-open .hero-statement-container {
 
 .about-description {
   font-family: var(--font-sans);
-  font-size: clamp(1.15rem, 1.8vw, 1.42rem);
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.8;
-  letter-spacing: 0.025em;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
   color: #1a1e26;
   margin: 0;
   max-width: 620px;
@@ -1238,7 +1247,7 @@ body.menu-open .hero-statement-container {
   object-position: center 20%;
   display: block;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, filter;
 }
 
@@ -1262,7 +1271,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.7s;
+    visibility 0.7s;
   pointer-events: none;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -1282,7 +1291,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
 }
 
 .founder-card:hover .founder-bio-content,
@@ -1294,7 +1303,7 @@ body.menu-open .hero-statement-container {
 
 .founder-education {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-size: 18px;
   font-weight: 500;
   color: #121316;
   letter-spacing: 0.04em;
@@ -1304,9 +1313,9 @@ body.menu-open .hero-statement-container {
 
 .founder-bio {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 1.6;
   color: rgba(18, 19, 22, 0.82);
   letter-spacing: 0.02em;
   margin: 0;
@@ -1321,7 +1330,7 @@ body.menu-open .hero-statement-container {
 
 .founder-name {
   font-family: var(--font-serif);
-  font-size: clamp(1.55rem, 2.2vw, 1.95rem);
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.025em;
   color: #121316;
@@ -1332,9 +1341,9 @@ body.menu-open .hero-statement-container {
 
 .founder-title {
   font-family: var(--font-sub);
-  font-size: 0.76rem;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.58);
   margin: 0;
@@ -1429,7 +1438,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -1440,9 +1449,9 @@ body.menu-open .hero-statement-container {
 
 .tech-partners-kicker {
   font-family: var(--font-sub);
-  font-size: 0.78rem;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.65);
   margin-bottom: 2rem;
@@ -1451,7 +1460,7 @@ body.menu-open .hero-statement-container {
 
 .tech-partners-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-size: 26px;
   font-weight: 400;
   color: #FFFFFF;
   letter-spacing: 0.02em;
@@ -1461,7 +1470,7 @@ body.menu-open .hero-statement-container {
 
 .tech-partners-subtitle {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.55);
@@ -1478,9 +1487,9 @@ body.menu-open .hero-statement-container {
 
 .tech-partners-para {
   font-family: var(--font-sans);
-  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.82;
+  line-height: 1.65;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
@@ -1501,7 +1510,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
-              transform 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    transform 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
   will-change: opacity, transform;
 }
 
@@ -1542,8 +1551,13 @@ body.menu-open .hero-statement-container {
 }
 
 @keyframes subtle-image-settle {
-  0% { transform: scale(1.06); }
-  100% { transform: scale(1.0); }
+  0% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1.0);
+  }
 }
 
 @media (max-width: 960px) {
@@ -1624,8 +1638,8 @@ body.menu-open .hero-statement-container {
 
 .products-kicker {
   font-family: var(--font-sub);
-  font-size: 0.78rem;
-  letter-spacing: 0.32em;
+  font-size: 14px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.65);
   display: block;
@@ -1634,7 +1648,7 @@ body.menu-open .hero-statement-container {
 
 .products-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-size: 26px;
   font-weight: 400;
   color: #FFFFFF;
   letter-spacing: 0.02em;
@@ -1667,6 +1681,7 @@ body.menu-open .hero-statement-container {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -1748,7 +1763,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.45s;
+    visibility 0.45s;
   pointer-events: none;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -1763,7 +1778,7 @@ body.menu-open .hero-statement-container {
 
 .gallery-category-name {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1837,8 +1852,8 @@ body.menu-open .hero-statement-container {
 
 .factories-kicker {
   font-family: var(--font-sub);
-  font-size: 0.78rem;
-  letter-spacing: 0.32em;
+  font-size: 14px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.58);
   display: block;
@@ -1847,7 +1862,7 @@ body.menu-open .hero-statement-container {
 
 .factories-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-size: 26px;
   font-weight: 400;
   color: #121316;
   letter-spacing: 0.04em;
@@ -1875,7 +1890,7 @@ body.menu-open .hero-statement-container {
 
 .counter-value {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.4vw, 3.4rem);
+  font-size: clamp(1.85rem, 2.5vw, 2.25rem);
   font-weight: 400;
   color: #121316;
   letter-spacing: 0.02em;
@@ -1888,8 +1903,8 @@ body.menu-open .hero-statement-container {
 
 .counter-label {
   font-family: var(--font-sub);
-  font-size: 0.78rem;
-  letter-spacing: 0.28em;
+  font-size: 14px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.65);
   line-height: 1.4;
@@ -1921,6 +1936,7 @@ body.menu-open .hero-statement-container {
   0% {
     transform: translate3d(-50%, 0, 0);
   }
+
   100% {
     transform: translate3d(0, 0, 0);
   }
@@ -1978,7 +1994,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.4s;
+    visibility 0.4s;
   pointer-events: none;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -1993,7 +2009,7 @@ body.menu-open .hero-statement-container {
 
 .factory-category-name {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2093,8 +2109,8 @@ body.menu-open .hero-statement-container {
 
 .contact-kicker {
   font-family: var(--font-sub);
-  font-size: 0.78rem;
-  letter-spacing: 0.32em;
+  font-size: 14px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.58);
   display: block;
@@ -2103,7 +2119,7 @@ body.menu-open .hero-statement-container {
 
 .contact-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-size: 26px;
   font-weight: 400;
   color: #121316;
   letter-spacing: 0.04em;
@@ -2130,8 +2146,8 @@ body.menu-open .hero-statement-container {
   border-radius: 40px;
   color: rgba(18, 19, 22, 0.72);
   font-family: var(--font-sub);
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
+  font-size: 14px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2246,6 +2262,7 @@ body.menu-open .hero-statement-container {
     r: 6px;
     opacity: 0.9;
   }
+
   100% {
     r: 36px;
     opacity: 0;
@@ -2318,7 +2335,7 @@ body.menu-open .hero-statement-container {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   border-left: 2px solid #c9932a;
   padding: 0.5rem 0 0.5rem 2.2rem;
   max-width: 880px;
@@ -2332,8 +2349,8 @@ body.menu-open .hero-statement-container {
 
 .office-country-kicker {
   font-family: var(--font-sub);
-  font-size: 0.76rem;
-  letter-spacing: 0.28em;
+  font-size: 14px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #c9932a;
   display: block;
@@ -2343,7 +2360,7 @@ body.menu-open .hero-statement-container {
 
 .office-name {
   font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-size: 24px;
   font-weight: 400;
   color: #121316;
   letter-spacing: 0.02em;
@@ -2365,8 +2382,8 @@ body.menu-open .hero-statement-container {
 
 .detail-label {
   font-family: var(--font-sub);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  font-size: 13px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.5);
   font-weight: 500;
@@ -2374,10 +2391,10 @@ body.menu-open .hero-statement-container {
 
 .office-address {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-size: 14px;
   font-style: normal;
   color: rgba(18, 19, 22, 0.85);
-  line-height: 1.65;
+  line-height: 1.6;
   max-width: 680px;
   letter-spacing: 0.01em;
 }
@@ -2391,7 +2408,7 @@ body.menu-open .hero-statement-container {
 
 .office-phone-link {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 18px;
   color: #121316;
   text-decoration: none;
   border-bottom: 1px dotted rgba(18, 19, 22, 0.35);
@@ -2418,8 +2435,8 @@ body.menu-open .hero-statement-container {
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-sub);
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
+  font-size: 14px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #8c600b;
   text-decoration: none;
@@ -2445,8 +2462,8 @@ body.menu-open .hero-statement-container {
 
 .contact-emails-kicker {
   font-family: var(--font-sub);
-  font-size: 0.76rem;
-  letter-spacing: 0.28em;
+  font-size: 14px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(18, 19, 22, 0.52);
   display: block;
@@ -2462,7 +2479,7 @@ body.menu-open .hero-statement-container {
 
 .contact-email-item {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-size: 18px;
   color: #121316;
   text-decoration: none;
   border-bottom: 1px solid rgba(18, 19, 22, 0.25);
@@ -2508,7 +2525,7 @@ body.menu-open .hero-statement-container {
 
 .footer-title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 16px;
   letter-spacing: 0.15em;
   color: #121316;
   font-weight: 500;
@@ -2516,15 +2533,15 @@ body.menu-open .hero-statement-container {
 
 .footer-tagline {
   font-family: var(--font-sub);
-  font-size: 0.68rem;
-  letter-spacing: 0.26em;
+  font-size: 13px;
+  letter-spacing: 0.22em;
   color: rgba(18, 19, 22, 0.5);
   text-transform: uppercase;
 }
 
 .footer-copyright {
   font-family: var(--font-sub);
-  font-size: 0.72rem;
+  font-size: 13px;
   letter-spacing: 0.15em;
   color: rgba(18, 19, 22, 0.45);
   margin: 0;
