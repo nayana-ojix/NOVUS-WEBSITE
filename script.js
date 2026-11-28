@@ -248,33 +248,6 @@
     const aboutSection = document.getElementById('about-us');
     if (!aboutSection) return;
 
-    // Lazy-load About Us background video when user approaches Section 02 (saves 5.6 MB initial load)
-    const aboutVideo = document.getElementById('about-video');
-    if (aboutVideo) {
-      aboutVideo.muted = true;
-      if ('IntersectionObserver' in window) {
-        const videoObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                if (aboutVideo.preload !== 'auto') {
-                  aboutVideo.preload = 'auto';
-                  aboutVideo.load();
-                }
-                aboutVideo.play().catch(() => { });
-                videoObserver.unobserve(aboutSection);
-              }
-            });
-          },
-          { rootMargin: '450px 0px' }
-        );
-        videoObserver.observe(aboutSection);
-      } else {
-        aboutVideo.preload = 'auto';
-        aboutVideo.play().catch(() => { });
-      }
-    }
-
     // Trigger headline entrance animation only once when section enters viewport
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(
