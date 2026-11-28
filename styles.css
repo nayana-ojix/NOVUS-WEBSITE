@@ -1005,10 +1005,13 @@ body.menu-open .hero-statement-container {
   object-position: center center;
   display: block;
   pointer-events: none;
-  filter: blur(8px) grayscale(80%);
-  opacity: 0.80; /* Reduces visual intensity by 20% against white background */
-  transform: scale(1.04); /* Prevents edge bleed from Gaussian blur */
-  will-change: transform, filter;
+}
+
+.about-bg-image {
+  filter: blur(7px) saturate(0.35);
+  opacity: 0.95; /* Reducing visual intensity by 5% */
+  transform: scale(1.04); /* Prevents blur edge bleed */
+  will-change: filter, transform;
 }
 
 /* Removed black fade overlay so background photo is completely visible */
