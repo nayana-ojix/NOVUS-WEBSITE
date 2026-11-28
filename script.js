@@ -357,6 +357,24 @@
   // DESIGN & PRODUCTS GALLERY CONTROLLER (TOUCH TOGGLE FOR MOBILE)
   // ==========================================================================
   function setupProductsGallery() {
+    const productsSection = document.getElementById('design-products');
+    if (productsSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              productsSection.classList.add('is-revealed');
+              observer.unobserve(productsSection);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(productsSection);
+    } else if (productsSection) {
+      productsSection.classList.add('is-revealed');
+    }
+
     const galleryItems = document.querySelectorAll('.gallery-item');
     if (!galleryItems.length) return;
 
@@ -436,6 +454,7 @@
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
+              factoriesSection.classList.add('is-revealed');
               animateCounters();
               observer.unobserve(factoriesSection);
             }
@@ -445,6 +464,7 @@
       );
       observer.observe(factoriesSection);
     } else {
+      factoriesSection.classList.add('is-revealed');
       animateCounters();
     }
 
@@ -473,6 +493,23 @@
   function setupContactSection() {
     const contactSection = document.getElementById('contact-us');
     if (!contactSection) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              contactSection.classList.add('is-revealed');
+              observer.unobserve(contactSection);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(contactSection);
+    } else {
+      contactSection.classList.add('is-revealed');
+    }
 
     const markers = contactSection.querySelectorAll('.interactive-marker');
     const tabs = contactSection.querySelectorAll('.location-tab');
