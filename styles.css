@@ -1563,11 +1563,34 @@ body.menu-open .hero-statement-container {
   z-index: 20;
   width: 100%;
   padding: 9rem 0;
-  background-color: var(--color-dark-bg);
+  background-color: #0b0c0e;
   overflow: hidden;
 }
 
+/* Background Image Layer: Tailoring Pattern & Blueprint Texture */
+.products-bg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.products-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
 .products-header {
+  position: relative;
+  z-index: 2;
   padding: 0 4rem 3.5rem 4rem;
   max-width: 1280px;
   margin: 0 auto;
@@ -1578,7 +1601,7 @@ body.menu-open .hero-statement-container {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(18, 19, 22, 0.58);
+  color: rgba(255, 255, 255, 0.65);
   display: block;
   margin-bottom: 0.6rem;
 }
@@ -1587,7 +1610,7 @@ body.menu-open .hero-statement-container {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 3.4vw, 3.25rem);
   font-weight: 400;
-  color: #121316;
+  color: #FFFFFF;
   letter-spacing: 0.02em;
   line-height: 1.2;
   margin: 0;
@@ -1595,9 +1618,10 @@ body.menu-open .hero-statement-container {
 
 /* Gallery Viewport & Infinite Marquee Track */
 .products-gallery-viewport {
+  position: relative;
+  z-index: 2;
   width: 100%;
   overflow: hidden;
-  position: relative;
   padding: 0.5rem 0;
   user-select: none;
 }
@@ -1635,8 +1659,10 @@ body.menu-open .hero-statement-container {
   height: 400px;
   flex-shrink: 0;
   overflow: hidden;
-  background-color: #f1f3f5;
+  background-color: #1a1c22;
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   margin: 0;
   cursor: pointer;
   outline: none;
