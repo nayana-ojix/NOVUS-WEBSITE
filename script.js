@@ -24,10 +24,12 @@
   const overlayBrandLogo = document.getElementById('overlay-brand-logo');
 
   // Animation & Interpolation Configuration
-  let scrollThreshold = Math.min(window.innerHeight * 0.7, 500); // Distance over which transition completes
   let heroWidth = 180; // Base width matching CSS --globe-hero-width
   let heroHeight = 192.41; // Base height matching CSS --globe-hero-height
-  let ticking = false;
+  let introComplete = false;
+  let introStartTime = null;
+  const INTRO_DELAY = 350; // ms to pause at center before moving
+  const INTRO_DURATION = 1500; // ms for globe to glide from center to navbar
 
   // Easing function for bespoke editorial grace (easeInOutCubic)
   function easeInOutCubic(t) {
@@ -62,14 +64,9 @@
     };
   }
 
-  // Core render loop on scroll
-  function updateScrollAnimation() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-
-    // Calculate progress clamped strictly [0, 1]
-    const rawProgress = Math.min(Math.max(scrollY / scrollThreshold, 0), 1);
-    const progress = easeInOutCubic(rawProgress);
-
+  // Apply globe position, scale, and state transitions
+  function setGlobePosition(progress, rawProgress) {
+    if (rawProgress === undefined) rawProgress = progress;
     const coords = getCoordinates();
 
     // Interpolate current center coordinates & scale
@@ -78,58 +75,97 @@
     const currentScale = (1 - progress) * 1.0 + progress * coords.targetScale;
 
     // Apply hardware-accelerated 3D transform
-    // Note: animatedGlobe is positioned at top:0, left:0, so we translate its center
     const translateX = currentCenterX - heroWidth / 2;
     const translateY = currentCenterY - heroHeight / 2;
 
     animatedGlobe.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${currentScale})`;
 
-    // Ambient glow and scroll cue fade-out
+    // Ambient glow fade-out
     if (ambientGlow) {
       ambientGlow.style.opacity = Math.max(0, 1 - rawProgress * 2.2);
     }
-    if (scrollCue) {
-      scrollCue.style.opacity = Math.max(0, 1 - rawProgress * 4.5);
-    }
 
-    // State threshold transitions
+    // State threshold transitions: reveal N, VUS, APPAREL around globe
     if (rawProgress >= 0.5) {
-      // Reveal N, VUS and APPAREL around the globe (globe replaces 'O' in NOVUS)
       brandLogo.classList.add('logo-revealed');
-      // Transition navbar to solid background
       navbar.classList.add('navbar-scrolled');
-      // Transition globe stroke from white to dark obsidian
       animatedGlobe.classList.add('globe-in-navbar');
     } else {
       brandLogo.classList.remove('logo-revealed');
       navbar.classList.remove('navbar-scrolled');
       animatedGlobe.classList.remove('globe-in-navbar');
     }
+  }
 
-    // Reveal editorial statement at absolute center once globe reaches final navbar position
-    if (heroStatement) {
-      if (rawProgress >= 0.95) {
+  // Automatic intro animation on website open
+  function runIntroAnimation(timestamp) {
+    if (introComplete) return;
+    if (!introStartTime) introStartTime = timestamp;
+    const elapsed = timestamp - introStartTime;
+
+    if (elapsed < INTRO_DELAY) {
+      setGlobePosition(0, 0);
+      requestAnimationFrame(runIntroAnimation);
+      return;
+    }
+
+    const animElapsed = elapsed - INTRO_DELAY;
+    const rawProgress = Math.min(Math.max(animElapsed / INTRO_DURATION, 0), 1);
+    const progress = easeInOutCubic(rawProgress);
+
+    setGlobePosition(progress, rawProgress);
+
+    if (rawProgress < 1) {
+      requestAnimationFrame(runIntroAnimation);
+    } else {
+      introComplete = true;
+      setGlobePosition(1, 1);
+      // Reveal editorial statement at absolute center once globe reaches navbar
+      if (heroStatement) {
         heroStatement.classList.add('is-visible');
-      } else {
-        heroStatement.classList.remove('is-visible');
+      }
+      // Reveal scroll invitation cue
+      if (scrollCue) {
+        scrollCue.classList.add('is-visible');
+      }
+    }
+  }
+
+  // Scroll handler
+  function onScroll() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+    // If user scrolls during intro, complete immediately so layout is stable
+    if (!introComplete && scrollY > 20) {
+      introComplete = true;
+      setGlobePosition(1, 1);
+      if (heroStatement) heroStatement.classList.add('is-visible');
+      if (scrollCue) scrollCue.classList.remove('is-visible');
+      return;
+    }
+
+    // Toggle scroll cue on scroll
+    if (scrollCue) {
+      if (scrollY > 30) {
+        scrollCue.classList.remove('is-visible');
+      } else if (introComplete) {
+        scrollCue.classList.add('is-visible');
       }
     }
 
-    ticking = false;
-  }
-
-  // Request Animation Frame throttled scroll handler
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(updateScrollAnimation);
-      ticking = true;
+    // Keep docked position exact on scroll
+    if (introComplete) {
+      setGlobePosition(1, 1);
     }
   }
 
-  // Handle window resizing to keep target coordinates exact
+  // Handle window resizing
   function onResize() {
-    scrollThreshold = Math.min(window.innerHeight * 0.7, 500);
-    updateScrollAnimation();
+    if (introComplete) {
+      setGlobePosition(1, 1);
+    } else {
+      setGlobePosition(0, 0);
+    }
   }
 
   // ==========================================================================
@@ -522,11 +558,19 @@
 
   // Initial setup on DOM ready
   function init() {
-    // Initial paint: position globe immediately
+    // Check initial scroll position: if page is loaded at top, trigger auto intro animation
     try {
-      updateScrollAnimation();
+      const initialScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      if (initialScrollY > 50) {
+        introComplete = true;
+        setGlobePosition(1, 1);
+        if (heroStatement) heroStatement.classList.add('is-visible');
+      } else {
+        setGlobePosition(0, 0);
+        requestAnimationFrame(runIntroAnimation);
+      }
     } catch (err) {
-      console.error('Scroll animation init error:', err);
+      console.error('Intro animation init error:', err);
     }
 
     try { setupThreadMenu(); } catch (e) { console.error(e); }
@@ -543,7 +587,9 @@
     // Re-verify position once all external fonts are loaded
     if (document.fonts) {
       document.fonts.ready.then(function () {
-        updateScrollAnimation();
+        if (introComplete) {
+          setGlobePosition(1, 1);
+        }
       });
     }
   }
