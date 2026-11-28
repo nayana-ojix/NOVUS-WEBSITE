@@ -303,28 +303,29 @@
   }
 
   // ==========================================================================
-  // LEADERSHIP SECTION CONTROLLER (INDEPENDENT TAP-TO-REVEAL FOR MOBILE)
+  // LEADERSHIP SECTION CONTROLLER (SMOOTH SCROLL REVEAL)
   // ==========================================================================
   function setupLeadershipSection() {
-    const founderCards = document.querySelectorAll('.founder-card');
-    if (!founderCards.length) return;
+    const founderRows = document.querySelectorAll('.founder-row');
+    if (!founderRows.length) return;
 
-    founderCards.forEach((card) => {
-      card.addEventListener('click', function (e) {
-        const isActive = this.classList.contains('is-active');
-        founderCards.forEach((c) => c.classList.remove('is-active'));
-        if (!isActive) {
-          this.classList.add('is-active');
-        }
-      });
-    });
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
 
-    // Close overlay on click outside
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.founder-card')) {
-        founderCards.forEach((c) => c.classList.remove('is-active'));
-      }
-    });
+      founderRows.forEach((row) => observer.observe(row));
+    } else {
+      founderRows.forEach((row) => row.classList.add('is-revealed'));
+    }
   }
 
   // ==========================================================================
