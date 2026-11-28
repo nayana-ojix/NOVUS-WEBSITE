@@ -282,10 +282,12 @@ body.menu-open .navbar {
   width: 50vw;
   max-width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.985);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.16);
+  background-color: #0b1a28;
+  background-image: url('/images/menu/menu-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -295,7 +297,7 @@ body.menu-open .navbar {
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 2;
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .thread-overlay.is-open .thread-overlay-panel {
@@ -338,6 +340,7 @@ body.menu-open .navbar {
   width: 135px;
   height: auto;
   display: block;
+  filter: brightness(0) invert(1);
 }
 
 /* 2. Refined Close Button */
@@ -348,7 +351,7 @@ body.menu-open .navbar {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  color: rgba(18, 19, 22, 0.75);
+  color: rgba(255, 255, 255, 0.82);
   padding: 0.5rem 0.6rem;
   border-radius: 4px;
   transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
@@ -356,8 +359,8 @@ body.menu-open .navbar {
 }
 
 .thread-close-btn:hover {
-  color: #000000;
-  background-color: rgba(18, 19, 22, 0.05);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
 
@@ -367,6 +370,7 @@ body.menu-open .navbar {
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: inherit;
 }
 
 .close-icon {
@@ -453,7 +457,7 @@ body.menu-open .navbar {
   font-weight: 400;
   letter-spacing: 0.06em;
   line-height: 1.2;
-  color: rgba(18, 19, 22, 0.88);
+  color: #f1ede5;
   text-decoration: none;
   display: inline-block;
   padding: 0.2rem 0;
@@ -466,11 +470,11 @@ body.menu-open .navbar {
 
 /* Sibling dimming for quiet luxury focus */
 .thread-nav-list:hover .thread-nav-link {
-  color: rgba(18, 19, 22, 0.32);
+  color: rgba(255, 255, 255, 0.38);
 }
 
 .thread-nav-list:hover .thread-nav-link:hover {
-  color: #000000;
+  color: #ffffff;
   letter-spacing: 0.09em;
   transform: translateX(6px);
 }
@@ -492,7 +496,7 @@ body.menu-open .navbar {
 }
 
 .overlay-bottom-details {
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding-top: 1.4rem;
   width: 100%;
 }
@@ -502,7 +506,7 @@ body.menu-open .navbar {
   font-size: 13px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(18, 19, 22, 0.45);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* ==========================================================================
