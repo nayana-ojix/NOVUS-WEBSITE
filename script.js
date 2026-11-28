@@ -188,6 +188,15 @@
       });
     }
 
+    // Backdrop Click (Click outside drawer on left half to close)
+    const threadBackdrop = document.getElementById('thread-overlay-backdrop');
+    if (threadBackdrop) {
+      threadBackdrop.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeThreadMenu();
+      });
+    }
+
     // Overlay Brand Logo Click
     if (overlayBrandLogo) {
       overlayBrandLogo.addEventListener('click', function (e) {

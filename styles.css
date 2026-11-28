@@ -184,9 +184,7 @@ body {
 }
 
 /* ==========================================================================
-   THE THREAD MENU: CLOSED STATE
-   Right-aligned custom icon: three delicate thread knots connected by
-   a subtle stitched line.
+   THE MENU TRIGGER: 9-DOT (3X3 MATRIX) SYMBOL
    ========================================================================== */
 .thread-menu-trigger {
   background: none;
@@ -194,99 +192,41 @@ body {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 1.1rem;
-  padding: 0.6rem 0.8rem;
-  color: var(--color-text-light);
-  border-radius: 4px;
+  justify-content: center;
+  padding: 0.55rem;
+  color: #121316;
+  border-radius: 8px;
   position: relative;
   z-index: 1020;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    color 0.25s ease;
   user-select: none;
 }
 
 .thread-menu-trigger:hover {
   transform: translateY(-1px);
-}
-
-.thread-trigger-label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(18, 19, 22, 0.85);
-  transition: color 0.3s ease, letter-spacing 0.3s ease;
-}
-
-.thread-menu-trigger:hover .thread-trigger-label {
   color: #000000;
-  letter-spacing: 0.32em;
+  background-color: rgba(18, 19, 22, 0.06);
 }
 
-/* Three Knots & Stitched Line SVG */
-.thread-trigger-svg {
-  width: 52px;
-  height: 18px;
+.menu-matrix-svg {
+  width: 24px;
+  height: 24px;
   display: block;
   overflow: visible;
-  color: #121316;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.thread-stitch-line {
-  stroke: rgba(18, 19, 22, 0.65);
-  transition: stroke 0.3s ease, stroke-dashoffset 0.6s ease;
-}
-
-.thread-menu-trigger:hover .thread-stitch-line {
-  stroke: #000000;
-  animation: trigger-stitch-glide 1.8s linear infinite;
-}
-
-@keyframes trigger-stitch-glide {
-  from {
-    stroke-dashoffset: 0;
-  }
-
-  to {
-    stroke-dashoffset: 15;
-  }
-}
-
-/* Thread Knots with Eyelet Rings */
-.thread-knot {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.matrix-dot {
+  fill: currentColor;
   transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease;
 }
 
-.knot-ring {
-  stroke: rgba(18, 19, 22, 0.75);
-  transition: stroke 0.3s ease, transform 0.3s ease;
-}
-
-.knot-dot {
-  fill: #121316;
-  transition: fill 0.3s ease;
-}
-
-.thread-menu-trigger:hover .knot-start {
-  transform: scale(1.15);
-  transition-delay: 0s;
-}
-
-.thread-menu-trigger:hover .knot-mid {
-  transform: scale(1.25);
-  transition-delay: 0.06s;
-}
-
-.thread-menu-trigger:hover .knot-end {
-  transform: scale(1.15);
-  transition-delay: 0.12s;
-}
-
-.thread-menu-trigger:hover .knot-ring {
-  stroke: #000000;
-  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
+.thread-menu-trigger:hover .menu-matrix-svg {
+  transform: rotate(90deg);
 }
 
 /* ==========================================================================
@@ -301,44 +241,65 @@ body.menu-open .navbar {
   z-index: 3000;
 }
 
-/* Hide central animated globe, ambient glow, and scroll cues when navbar is open */
-body.menu-open .animated-globe-wrapper,
-body.menu-open .ambient-glow,
-body.menu-open .scroll-cue,
-body.menu-open .hero-image-container,
-body.menu-open .hero-statement-container {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
-}
-
 .thread-overlay {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.985);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem 3.5rem;
-  opacity: 0;
-  visibility: hidden;
+  z-index: 2500;
   pointer-events: none;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0.45s;
-  overflow-y: auto;
-  overflow-x: hidden;
+  visibility: hidden;
+  transition: visibility 0.45s ease;
 }
 
 .thread-overlay.is-open {
-  opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+/* Translucent backdrop over left half / entire background */
+.thread-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.thread-overlay.is-open .thread-overlay-backdrop {
+  opacity: 1;
+}
+
+/* Right Half Screen Drawer */
+.thread-overlay-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50vw;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.985);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 3.5rem;
+  transform: translateX(100%);
+  transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.thread-overlay.is-open .thread-overlay-panel {
+  transform: translateX(0);
 }
 
 /* Top Bar: Logo on Left, Close Button on Right */
@@ -347,12 +308,10 @@ body.menu-open .hero-statement-container {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
   opacity: 0;
   transform: translateY(-8px);
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
 .thread-overlay.is-open .thread-overlay-bar {
@@ -376,7 +335,7 @@ body.menu-open .hero-statement-container {
 }
 
 .overlay-logo-img {
-  width: 145px;
+  width: 135px;
   height: auto;
   display: block;
 }
@@ -391,12 +350,14 @@ body.menu-open .hero-statement-container {
   gap: 0.75rem;
   color: rgba(18, 19, 22, 0.75);
   padding: 0.5rem 0.6rem;
-  transition: color 0.3s ease, transform 0.3s ease;
+  border-radius: 4px;
+  transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
   user-select: none;
 }
 
 .thread-close-btn:hover {
   color: #000000;
+  background-color: rgba(18, 19, 22, 0.05);
   transform: translateY(-1px);
 }
 
@@ -420,26 +381,25 @@ body.menu-open .hero-statement-container {
 }
 
 /* ==========================================================================
-   3. SEVEN NAVIGATION LINKS: CLEAN, SPACIOUS, EDITORIAL TYPOGRAPHY
-   Reduced font size, balanced vertical rhythm, sole focus of the overlay.
+   3. SEVEN NAVIGATION LINKS: RIGHT HALF EDITORIAL LAYOUT
    ========================================================================== */
 .thread-nav-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem 0;
+  max-width: 520px;
+  margin: auto 0;
+  padding: 2.2rem 0;
 }
 
 .thread-nav-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.45rem;
+  align-items: flex-start;
+  gap: 1.4rem;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -448,9 +408,9 @@ body.menu-open .hero-statement-container {
 .thread-nav-item {
   position: relative;
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(16px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(1) {
@@ -458,32 +418,32 @@ body.menu-open .hero-statement-container {
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(2) {
-  transition-delay: 0.13s;
+  transition-delay: 0.12s;
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(3) {
-  transition-delay: 0.18s;
+  transition-delay: 0.16s;
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(4) {
-  transition-delay: 0.23s;
+  transition-delay: 0.20s;
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(5) {
-  transition-delay: 0.28s;
+  transition-delay: 0.24s;
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(6) {
-  transition-delay: 0.33s;
+  transition-delay: 0.28s;
 }
 
 .thread-overlay.is-open .thread-nav-item:nth-child(7) {
-  transition-delay: 0.38s;
+  transition-delay: 0.32s;
 }
 
 .thread-overlay.is-open .thread-nav-item {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* The Navigation Link */
@@ -491,12 +451,12 @@ body.menu-open .hero-statement-container {
   font-family: var(--font-serif);
   font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1.15;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
   color: rgba(18, 19, 22, 0.88);
   text-decoration: none;
   display: inline-block;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0;
   position: relative;
   transition: color 0.35s ease,
     letter-spacing 0.35s ease,
@@ -511,33 +471,38 @@ body.menu-open .hero-statement-container {
 
 .thread-nav-list:hover .thread-nav-link:hover {
   color: #000000;
-  letter-spacing: 0.12em;
-  transform: translateY(-1px);
+  letter-spacing: 0.09em;
+  transform: translateX(6px);
 }
 
-/* Subtle, refined hairline underline animation */
+/* Subtle hairline underline animation */
 .thread-nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -2px;
+  left: 0;
   width: 0;
-  height: 1px;
-  background-color: rgba(18, 19, 22, 0.65);
+  height: 1.5px;
+  background-color: #c9932a;
   transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
 }
 
 .thread-nav-link:hover::after {
-  width: 80%;
+  width: 100%;
 }
 
-/* Bottom Spacer for Optical Symmetry */
-.overlay-bottom-spacer {
-  height: 28px;
+.overlay-bottom-details {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  padding-top: 1.4rem;
   width: 100%;
-  pointer-events: none;
+}
+
+.overlay-bottom-text {
+  font-family: var(--font-sub);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(18, 19, 22, 0.45);
 }
 
 /* ==========================================================================
@@ -2611,6 +2576,13 @@ body.menu-open .hero-statement-container {
   }
 }
 
+@media (max-width: 960px) {
+  .thread-overlay-panel {
+    width: 60vw;
+    padding: 2.2rem 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --navbar-height: 72px;
@@ -2627,17 +2599,14 @@ body.menu-open .hero-statement-container {
     height: 38.47px;
   }
 
-  .thread-trigger-label {
-    display: none;
-    /* Shows purely the iconic three-knot stitched line on mobile */
+  .menu-matrix-svg {
+    width: 22px;
+    height: 22px;
   }
 
-  .thread-trigger-svg {
-    width: 44px;
-  }
-
-  .thread-overlay {
-    padding: 1.5rem 1.4rem;
+  .thread-overlay-panel {
+    width: 100vw;
+    padding: 1.8rem 1.6rem;
   }
 
   .thread-nav-list {
@@ -2666,8 +2635,8 @@ body.menu-open .hero-statement-container {
     height: 33.98px;
   }
 
-  .thread-overlay {
-    padding: 1.25rem 1.15rem;
+  .thread-overlay-panel {
+    padding: 1.5rem 1.25rem;
   }
 
   .thread-nav-list {

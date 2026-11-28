@@ -44,76 +44,76 @@
         </div>
       </a>
 
-      <!-- The Thread Menu Trigger (Closed State: Three thread knots connected by stitched line) -->
-      <button class="thread-menu-trigger" id="thread-menu-trigger" aria-label="Open The Thread Menu"
+      <!-- The Menu Trigger (3x3 Matrix of 9 Dots) -->
+      <button class="thread-menu-trigger" id="thread-menu-trigger" aria-label="Open Navigation Menu"
         aria-expanded="false">
-        <span class="thread-trigger-label">MENU</span>
-        <svg class="thread-trigger-svg" viewBox="0 0 52 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg class="menu-matrix-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true">
-          <!-- Subtle stitched connecting line -->
-          <line x1="5" y1="9" x2="47" y2="9" class="thread-stitch-line" stroke="currentColor" stroke-width="1.2"
-            stroke-dasharray="3 2" stroke-linecap="round" />
-          <!-- Three delicate embroidery thread knots -->
-          <g class="thread-knot knot-start">
-            <circle cx="9" cy="9" r="3.2" class="knot-ring" stroke="currentColor" stroke-width="1" fill="none" />
-            <circle cx="9" cy="9" r="1.3" class="knot-dot" fill="currentColor" />
-          </g>
-          <g class="thread-knot knot-mid">
-            <circle cx="26" cy="9" r="3.2" class="knot-ring" stroke="currentColor" stroke-width="1" fill="none" />
-            <circle cx="26" cy="9" r="1.3" class="knot-dot" fill="currentColor" />
-          </g>
-          <g class="thread-knot knot-end">
-            <circle cx="43" cy="9" r="3.2" class="knot-ring" stroke="currentColor" stroke-width="1" fill="none" />
-            <circle cx="43" cy="9" r="1.3" class="knot-dot" fill="currentColor" />
-          </g>
+          <circle cx="4" cy="4" r="2.2" class="matrix-dot" />
+          <circle cx="12" cy="4" r="2.2" class="matrix-dot" />
+          <circle cx="20" cy="4" r="2.2" class="matrix-dot" />
+          <circle cx="4" cy="12" r="2.2" class="matrix-dot" />
+          <circle cx="12" cy="12" r="2.2" class="matrix-dot" />
+          <circle cx="20" cy="12" r="2.2" class="matrix-dot" />
+          <circle cx="4" cy="20" r="2.2" class="matrix-dot" />
+          <circle cx="12" cy="20" r="2.2" class="matrix-dot" />
+          <circle cx="20" cy="20" r="2.2" class="matrix-dot" />
         </svg>
       </button>
 
     </div>
 
     <!-- ============================================================
-         THE THREAD MENU: REFINED MINIMAL NAVIGATION OVERLAY
-         Only: NOVUS Stitch Globe logo, Close button, and 7 Links.
-         Pure, spacious, quiet luxury editorial layout.
+         THE NAVIGATION MENU: RIGHT HALF LAYOUT DRAWER
          ============================================================ -->
     <div class="thread-overlay" id="thread-overlay" aria-hidden="true" role="dialog" aria-modal="true"
       aria-label="Main Navigation">
 
-      <!-- Top Bar: Logo on Left, Close Button on Right -->
-      <div class="thread-overlay-bar">
+      <!-- Backdrop (Click on Left Half to Close) -->
+      <div class="thread-overlay-backdrop" id="thread-overlay-backdrop" aria-hidden="true"></div>
 
-        <!-- 1. Official NOVUS Logo -->
-        <a href="#home" class="overlay-brand-logo" id="overlay-brand-logo" aria-label="NOVUS APPAREL LIMITED Home">
-          <img src="/images/logo/novus-logo-full.png" alt="NOVUS APPAREL LIMITED" class="overlay-logo-img">
-        </a>
+      <!-- Right Half Drawer Panel -->
+      <div class="thread-overlay-panel">
 
-        <!-- 2. Close Button -->
-        <button class="thread-close-btn" id="thread-close-btn" aria-label="Close navigation overlay">
-          <span class="close-btn-text">CLOSE</span>
-          <svg class="close-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <line x1="3" y1="3" x2="13" y2="13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-            <line x1="13" y1="3" x2="3" y2="13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-          </svg>
-        </button>
+        <!-- Top Bar: Logo on Left, Close Button on Right -->
+        <div class="thread-overlay-bar">
+
+          <!-- 1. Official NOVUS Logo -->
+          <a href="#home" class="overlay-brand-logo" id="overlay-brand-logo" aria-label="NOVUS APPAREL LIMITED Home">
+            <img src="/images/logo/novus-logo-full.png" alt="NOVUS APPAREL LIMITED" class="overlay-logo-img">
+          </a>
+
+          <!-- 2. Close Button -->
+          <button class="thread-close-btn" id="thread-close-btn" aria-label="Close navigation overlay">
+            <span class="close-btn-text">CLOSE</span>
+            <svg class="close-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="3" y1="3" x2="13" y2="13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              <line x1="13" y1="3" x2="3" y2="13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+          </button>
+
+        </div>
+
+        <!-- Center: Clean, Spacious Seven Navigation Links -->
+        <nav class="thread-nav-container" aria-label="Overlay Navigation">
+          <ul class="thread-nav-list">
+            <li class="thread-nav-item"><a href="#home" class="thread-nav-link">Home</a></li>
+            <li class="thread-nav-item"><a href="#about-us" class="thread-nav-link">About Us</a></li>
+            <li class="thread-nav-item"><a href="#leadership" class="thread-nav-link">Leadership</a></li>
+            <li class="thread-nav-item"><a href="#technology-partners" class="thread-nav-link">Technology Partners</a>
+            </li>
+            <li class="thread-nav-item"><a href="#design-products" class="thread-nav-link">Design &amp; Products</a></li>
+            <li class="thread-nav-item"><a href="#factories" class="thread-nav-link">Factories</a></li>
+            <li class="thread-nav-item"><a href="#contact-us" class="thread-nav-link">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Bottom details for subtle refinement -->
+        <div class="overlay-bottom-details">
+          <span class="overlay-bottom-text">High Fashion & Atelier Craftsmanship</span>
+        </div>
 
       </div>
-
-      <!-- Center: Clean, Spacious Seven Navigation Links -->
-      <nav class="thread-nav-container" aria-label="Overlay Navigation">
-        <ul class="thread-nav-list">
-          <li class="thread-nav-item"><a href="#home" class="thread-nav-link">Home</a></li>
-          <li class="thread-nav-item"><a href="#about-us" class="thread-nav-link">About Us</a></li>
-          <li class="thread-nav-item"><a href="#leadership" class="thread-nav-link">Leadership</a></li>
-          <li class="thread-nav-item"><a href="#technology-partners" class="thread-nav-link">Technology Partners</a>
-          </li>
-          <li class="thread-nav-item"><a href="#design-products" class="thread-nav-link">Design &amp; Products</a></li>
-          <li class="thread-nav-item"><a href="#factories" class="thread-nav-link">Factories</a></li>
-          <li class="thread-nav-item"><a href="#contact-us" class="thread-nav-link">Contact Us</a></li>
-        </ul>
-      </nav>
-
-      <!-- Bottom Spacer for Perfect Optical Centering -->
-      <div class="overlay-bottom-spacer" aria-hidden="true"></div>
 
     </div>
   </header>
