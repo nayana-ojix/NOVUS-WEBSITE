@@ -585,15 +585,14 @@ body.menu-open .hero-statement-container {
   will-change: transform;
 }
 
-/* Subtle atmosphere overlay ensuring smooth integration with dark theme */
+/* Subtle top/bottom edge gradient for smooth navbar & section transitions */
 .hero-image-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 2;
-  background: radial-gradient(circle at center, rgba(9, 10, 13, 0.15) 0%, rgba(9, 10, 13, 0.45) 80%, rgba(9, 10, 13, 0.8) 100%),
-    linear-gradient(180deg, rgba(9, 10, 13, 0.45) 0%, rgba(9, 10, 13, 0) 25%, rgba(9, 10, 13, 0) 75%, rgba(9, 10, 13, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(9, 10, 13, 0.25) 0%, rgba(9, 10, 13, 0) 25%, rgba(9, 10, 13, 0) 75%, rgba(9, 10, 13, 0.35) 100%);
   pointer-events: none;
 }
 
@@ -1013,16 +1012,10 @@ body.menu-open .hero-statement-container {
   pointer-events: none;
 }
 
-/* Dark Atelier Overlay for Perfect Text Readability */
+/* Removed black fade overlay so background photo is completely visible */
 .about-image-overlay,
 .about-video-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(9, 10, 13, 0.72) 0%, rgba(9, 10, 13, 0.86) 70%, rgba(9, 10, 13, 0.96) 100%),
-              linear-gradient(180deg, rgba(9, 10, 13, 0.92) 0%, rgba(9, 10, 13, 0.68) 50%, rgba(9, 10, 13, 0.94) 100%);
-  pointer-events: none;
+  display: none;
 }
 
 .about-container {
@@ -1055,7 +1048,8 @@ body.menu-open .hero-statement-container {
   font-weight: 400;
   line-height: 1.22;
   letter-spacing: 0.015em;
-  color: rgba(241, 237, 229, 0.35);
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
   transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1066,11 +1060,13 @@ body.menu-open .hero-statement-container {
 }
 
 .about-headline:hover {
-  color: rgba(241, 237, 229, 0.72);
+  color: #ffffff;
 }
 
 .about-headline.is-active {
-  color: #F1EDE5; /* Warm Ivory refined highlight */
+  color: #ffffff;
+  font-weight: 500;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.98), 0 0 8px rgba(0, 0, 0, 0.95);
 }
 
 /* Staggered entrance animation when section enters viewport */
@@ -1124,10 +1120,11 @@ body.menu-open .hero-statement-container {
 .about-description {
   font-family: var(--font-sans);
   font-size: clamp(1.15rem, 1.8vw, 1.42rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
   letter-spacing: 0.025em;
-  color: rgba(241, 237, 229, 0.88);
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
   margin: 0;
   max-width: 620px;
 }
