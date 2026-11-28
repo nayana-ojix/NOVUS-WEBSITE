@@ -1005,11 +1005,10 @@ body.menu-open .hero-statement-container {
   object-position: center center;
   display: block;
   pointer-events: none;
-  /* Soft Gaussian blur, desaturation & 40% reduced visual intensity for pristine typography legibility */
-  filter: blur(8px) saturate(0.4);
-  opacity: 0.60;
-  transform: scale(1.06);
-  will-change: filter, opacity, transform;
+  filter: blur(8px) grayscale(80%);
+  opacity: 0.80; /* Reduces visual intensity by 20% against white background */
+  transform: scale(1.04); /* Prevents edge bleed from Gaussian blur */
+  will-change: transform, filter;
 }
 
 /* Removed black fade overlay so background photo is completely visible */
